@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ImageSorter
+﻿namespace ImageSorter
 {
     public static class GlobalConstants
     {
@@ -31,5 +25,37 @@ namespace ImageSorter
         /// 直方图
         /// </summary>
         HistogramCompare,
+    }
+
+    public enum E_ExecuteType
+    {
+        /// <summary>
+        /// 删除目前显示的所有图片
+        /// </summary>
+        DeleteAll,
+        /// <summary>
+        /// 删除现在所选择的图片
+        /// </summary>
+        DeleteSelect,
+        /// <summary>
+        /// 基于目标图片批量重命名所有显示中的图片
+        /// </summary>
+        RenameAllBaseOnTarget,
+        /// <summary>
+        /// 基于目标图片批量重命名所有选择的图片
+        /// </summary>
+        RenameSelectBaseOnTarget
+    }
+
+    public enum E_ExportType
+    {
+        /// <summary>
+        /// 导出目前显示的所有图片
+        /// </summary>
+        ExportAll,
+        /// <summary>
+        /// 导出现在选择的图片
+        /// </summary>
+        ExportSelect,
     }
 }

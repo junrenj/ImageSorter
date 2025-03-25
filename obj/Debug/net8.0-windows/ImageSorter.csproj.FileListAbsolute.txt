@@ -16,3 +16,4 @@ C:\Users\jianj\Desktop\ImageSorter\ImageSorter\obj\Debug\net8.0-windows\ImageSor
 C:\Users\jianj\Desktop\ImageSorter\ImageSorter\obj\Debug\net8.0-windows\ref\ImageSorter.dll
 C:\Users\jianj\Desktop\ImageSorter\ImageSorter\obj\Debug\net8.0-windows\ImageSorter.Form1_importImg.resources
 C:\Users\jianj\Desktop\ImageSorter\ImageSorter\obj\Debug\net8.0-windows\ImageSorter.Form2.resources
+C:\Users\jianj\Desktop\ImageSorter\ImageSorter\obj\Debug\net8.0-windows\ImageSorter.sourcelink.json
