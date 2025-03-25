@@ -1,0 +1,42 @@
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows Installer files
+*.pdb
+
+# User-specific files
+.vs/
+.vs2019/
+.vs2017/
+.idea/
+*.user
+*.userosscache
+*.suo
+*.userprefs
+
+# User-specific files (Windows)
+Thumbs.db
+Desktop.ini
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Dd]Release/
+[Dd]ebugTests/
+[Dd]ReleaseTests/
+x64/
+x86/
+[Aa]rm/
+
+# Uncomment if you have tasks that create project's project's build folder
+# bin/
+# obj/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
