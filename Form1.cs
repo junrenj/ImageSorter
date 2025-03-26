@@ -7,6 +7,7 @@ namespace ImageSorter
         // 0.逻辑
         private Form1_ImportImg importLogic;
         private Form1_RenameImgs renameLogic;
+        private Form1_ExportImgs exportLogic;
         // 0.数据容器相关
         public List<Image_Processing> importedImage_List;            // 导入的图片信息列表
         public List<PictureBox_Advance> pictureBoxes_List;           // 主面板上的图片UI列表
@@ -41,6 +42,7 @@ namespace ImageSorter
             InitializeComponent();
             importLogic = new Form1_ImportImg(this);
             renameLogic = new Form1_RenameImgs(this);
+            exportLogic = new Form1_ExportImgs(this);
             pictureBoxes_List = new List<PictureBox_Advance>();
             importedImage_List = new List<Image_Processing>();
             selectPictures_List = new List<PictureBox_Advance>();
@@ -77,7 +79,8 @@ namespace ImageSorter
             importedImage_List.Clear();
             foreach (var pb in pictureBoxes_List)
             {
-                pb.Image.Dispose();
+                if(pb != null)
+                    pb.Image.Dispose();
             }
             pictureBoxes_List.Clear();
             selectPictures_List.Clear();
@@ -117,6 +120,25 @@ namespace ImageSorter
         private void Btn_Rename_Click(object sender, EventArgs e)
         {
             renameLogic.RenameOneImage(activePictureBox);
+        }
+
+        /// <summary>
+        /// 比对图片按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Btn_Compare2Img_Click(object sender, EventArgs e)
+        {
+            if (activePictureBox == null)
+            {
+                MessageBox.Show("请先选择目标图片！");
+                return;
+            }
+            form2 = new Form2(activePictureBox);
+            form2.FormClosed += Form2ClosedEvent;
+            form2.Show();
+            isForm2Open = true;
+            LockButtons(true);
         }
 
         #endregion
@@ -277,38 +299,20 @@ namespace ImageSorter
         }
 
         /// <summary>
-        /// 比对图片按钮
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Btn_Compare2Img_Click(object sender, EventArgs e)
-        {
-            if (activePictureBox == null)
-            {
-                MessageBox.Show("请先选择目标图片！");
-                return;
-            }
-            form2 = new Form2(activePictureBox);
-            form2.FormClosed += Form2ClosedEvent;
-            form2.Show();
-            isForm2Open = true;
-            LockButtons(true);
-        }
-
-        /// <summary>
         /// 面板2关上事件
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
         private void Form2ClosedEvent(object sender, FormClosedEventArgs args)
         {
+            form2.Clear();
             isForm2Open = false;
             LockButtons(false);
         }
 
         #endregion
 
-        #region 图片批量修改/导出UI事件
+        #region 图片批量修改/导出/删除UI事件
         /// <summary>
         /// 执行图片操作(重命名、删除等等)
         /// </summary>
@@ -316,8 +320,42 @@ namespace ImageSorter
         /// <param name="e"></param>
         private void Btn_Execute_Click(object sender, EventArgs e)
         {
-            //TODO
-            activePictureBox = null;
+            //activePictureBox = null;
+            switch (executeType)
+            {
+                case E_ExecuteType.DeleteAll:
+
+                    // 删除完所有之后 顺便触发btn clear，清空缓存
+                    Btn_Clear_Click(sender, e);
+                    break;
+                case E_ExecuteType.DeleteSelect:
+                    break;
+                case E_ExecuteType.RenameAllBaseOnTarget:
+                case E_ExecuteType.RenameSelectBaseOnTarget:
+                    RenameFunct();
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// 重命名函数
+        /// </summary>
+        private void RenameFunct()
+        {
+            List<PictureBox_Advance> renameList = new List<PictureBox_Advance>();
+            switch (executeType)
+            {
+                case E_ExecuteType.RenameAllBaseOnTarget:
+                    foreach (PictureBox_Advance item in mainPanel.Controls)
+                    {
+                        renameList.Add(item);
+                    }
+                    break;
+                case E_ExecuteType.RenameSelectBaseOnTarget:
+                    renameList = selectPictures_List;
+                    break;
+            }
+            renameLogic.RenameMultipleImage(renameList);
         }
 
         /// <summary>
@@ -365,46 +403,8 @@ namespace ImageSorter
                     exportList = selectPictures_List;
                     break;
             }
-            if (exportList == null || exportList.Count == 0)
-            {
-                MessageBox.Show("没有可导出的图片！");
-                return;
-            }
-
-            using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())
-            {
-                folderDialog.Description = "选择要保存图片的文件夹";
-                if (folderDialog.ShowDialog() == DialogResult.OK)
-                {
-                    string savePath = folderDialog.SelectedPath;
-
-                    try
-                    {
-                        int count = 0;
-                        foreach (PictureBox pb in exportList)
-                        {
-                            if (pb.Image != null)
-                            {
-                                string fileName = $"Image_{count}.png"; // 生成唯一文件名
-                                string filePath = Path.Combine(savePath, fileName);
-
-                                // 保存图片副本
-                                pb.Image.Save(filePath, System.Drawing.Imaging.ImageFormat.Png);
-                                count++;
-                            }
-                        }
-                        MessageBox.Show($"成功保存 {count} 张图片到 {savePath}");
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("保存图片时出错：" + ex.Message);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("未选择目标文件夹！");
-                }
-            }
+            // 传输给输出模块操作
+            exportLogic.ExportImgs(exportList);
         }
 
         /// <summary>

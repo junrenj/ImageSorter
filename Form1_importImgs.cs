@@ -38,14 +38,7 @@
                         return;
                     }
                 }
-                PictureBox_Advance pictureBox = new PictureBox_Advance
-                {
-                    Image = Image.FromFile(file),
-                    SizeMode = PictureBoxSizeMode.Zoom,
-                    Width = 64,
-                    Height = 64,
-                    Margin = new Padding(5)
-                };
+                PictureBox_Advance pictureBox = new PictureBox_Advance(file, 64, 64);
                 toolTip.SetToolTip(pictureBox, Path.GetFileNameWithoutExtension(file));
 
                 // 注册点击事件

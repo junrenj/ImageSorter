@@ -5,12 +5,26 @@
         public Image_Processing img_data;
         public Label label;
         private Color borderColor = Color.Transparent;
+        
+        public PictureBox_Advance(string filePath, int width, int height)
+        {
+            this.Image = LoadThumbnail(filePath, width, height);
+            this.SizeMode = PictureBoxSizeMode.Zoom;
+            this.Width = width;
+            this.Height = height;
+            this.Margin = new Padding(5);
+        }
+
         public Color BorderColor
         {
             get { return borderColor; }
             set { borderColor = value; Invalidate(); }
         }
 
+        /// <summary>
+        /// 自定义绘制边框
+        /// </summary>
+        /// <param name="pe"></param>
         protected override void OnPaint(PaintEventArgs pe)
         {
             base.OnPaint(pe);
@@ -22,6 +36,20 @@
                     // 绘制边框
                     pe.Graphics.DrawRectangle(pen, 0, 0, this.Width - 1, this.Height - 1);
                 }
+            }
+        }
+        /// <summary>
+        /// 自动生成缩略图的方法
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <returns></returns>
+        private Image LoadThumbnail(string filePath, int width, int height)
+        {
+            using (Image img = Image.FromFile(filePath))
+            {
+                return img.GetThumbnailImage(width, height, null, IntPtr.Zero);
             }
         }
     }

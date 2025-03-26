@@ -22,6 +22,9 @@
             pictureBox_Other.Image = Image.FromFile(pb_other.img_data.originalImagePath);
         }
 
+        /// <summary>
+        /// 初始化组件
+        /// </summary>
         private void InitializeComponent()
         {
             picturebox_Target = new PictureBox();
@@ -58,6 +61,12 @@
             ((System.ComponentModel.ISupportInitialize)picturebox_Target).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox_Other).EndInit();
             ResumeLayout(false);
+        }
+
+        public void Clear()
+        {
+            pictureBox_Other.Image.Dispose();
+            picturebox_Target.Image.Dispose();
         }
 
         /// <summary>
