@@ -4,7 +4,7 @@
     {
         public const int size_HashDownSample = 8;
         // 直方图参数
-        public static ushort h_binSize = 256;
+        public static ushort h_binSize = 32;
     }
 
     public enum E_SortType
@@ -13,10 +13,6 @@
         /// 均值哈希
         /// </summary>
         AHash,
-        /// <summary>
-        /// 感知哈希
-        /// </summary>
-        PHash,
         /// <summary>
         /// 差值哈希
         /// </summary>

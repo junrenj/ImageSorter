@@ -49,11 +49,14 @@ namespace ImageSorter
             label1 = new Label();
             label2 = new Label();
             selectBox_ModifyWay = new ComboBox();
+            lab_high = new Label();
+            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)trackBar_Similar).BeginInit();
             SuspendLayout();
             // 
             // btn_Import
             // 
+            btn_Import.Anchor = AnchorStyles.Left;
             btn_Import.Location = new Point(23, 12);
             btn_Import.Name = "btn_Import";
             btn_Import.Size = new Size(75, 23);
@@ -64,7 +67,8 @@ namespace ImageSorter
             // 
             // btn_Calculate
             // 
-            btn_Calculate.Location = new Point(741, 223);
+            btn_Calculate.Anchor = AnchorStyles.Right;
+            btn_Calculate.Location = new Point(741, 235);
             btn_Calculate.Name = "btn_Calculate";
             btn_Calculate.Size = new Size(75, 23);
             btn_Calculate.TabIndex = 1;
@@ -78,6 +82,7 @@ namespace ImageSorter
             // 
             // mainPanel
             // 
+            mainPanel.Anchor = AnchorStyles.Left;
             mainPanel.AutoScroll = true;
             mainPanel.Location = new Point(0, 54);
             mainPanel.Name = "mainPanel";
@@ -86,6 +91,7 @@ namespace ImageSorter
             // 
             // btn_Clear
             // 
+            btn_Clear.Anchor = AnchorStyles.Left;
             btn_Clear.Location = new Point(116, 12);
             btn_Clear.Name = "btn_Clear";
             btn_Clear.Size = new Size(75, 23);
@@ -96,6 +102,7 @@ namespace ImageSorter
             // 
             // btn_Export
             // 
+            btn_Export.Anchor = AnchorStyles.Right;
             btn_Export.Location = new Point(741, 477);
             btn_Export.Name = "btn_Export";
             btn_Export.Size = new Size(75, 23);
@@ -106,8 +113,9 @@ namespace ImageSorter
             // 
             // selectBox_Algo
             // 
+            selectBox_Algo.Anchor = AnchorStyles.Right;
             selectBox_Algo.FormattingEnabled = true;
-            selectBox_Algo.Items.AddRange(new object[] { "均值哈希 AHash", "差值哈希 DHash", "感知哈希 PHash", "直方图 H" });
+            selectBox_Algo.Items.AddRange(new object[] { "均值哈希 AHash", "感知哈希 PHash", "直方图 H" });
             selectBox_Algo.Location = new Point(741, 54);
             selectBox_Algo.Name = "selectBox_Algo";
             selectBox_Algo.Size = new Size(121, 25);
@@ -117,6 +125,7 @@ namespace ImageSorter
             // 
             // trackBar_Similar
             // 
+            trackBar_Similar.Anchor = AnchorStyles.Right;
             trackBar_Similar.Location = new Point(666, 134);
             trackBar_Similar.Maximum = 100;
             trackBar_Similar.Name = "trackBar_Similar";
@@ -127,6 +136,7 @@ namespace ImageSorter
             // 
             // checkbox_similar
             // 
+            checkbox_similar.Anchor = AnchorStyles.Right;
             checkbox_similar.AutoSize = true;
             checkbox_similar.Location = new Point(669, 99);
             checkbox_similar.Name = "checkbox_similar";
@@ -138,16 +148,19 @@ namespace ImageSorter
             // 
             // selectBox_HBin
             // 
+            selectBox_HBin.Anchor = AnchorStyles.Right;
             selectBox_HBin.FormattingEnabled = true;
             selectBox_HBin.Items.AddRange(new object[] { "32", "64", "128", "256" });
-            selectBox_HBin.Location = new Point(741, 179);
+            selectBox_HBin.Location = new Point(741, 195);
             selectBox_HBin.Name = "selectBox_HBin";
             selectBox_HBin.Size = new Size(121, 25);
+            selectBox_HBin.Text = "32";
             selectBox_HBin.TabIndex = 10;
             selectBox_HBin.SelectedIndexChanged += SelectHBinBox_OnChanged;
             // 
             // lab_algo
             // 
+            lab_algo.Anchor = AnchorStyles.Right;
             lab_algo.AutoSize = true;
             lab_algo.Location = new Point(666, 59);
             lab_algo.Name = "lab_algo";
@@ -157,8 +170,9 @@ namespace ImageSorter
             // 
             // lab_sampleFrequency
             // 
+            lab_sampleFrequency.Anchor = AnchorStyles.Right;
             lab_sampleFrequency.AutoSize = true;
-            lab_sampleFrequency.Location = new Point(666, 182);
+            lab_sampleFrequency.Location = new Point(666, 198);
             lab_sampleFrequency.Name = "lab_sampleFrequency";
             lab_sampleFrequency.Size = new Size(56, 17);
             lab_sampleFrequency.TabIndex = 12;
@@ -166,6 +180,7 @@ namespace ImageSorter
             // 
             // btn_Execute
             // 
+            btn_Execute.Anchor = AnchorStyles.Right;
             btn_Execute.Location = new Point(741, 361);
             btn_Execute.Name = "btn_Execute";
             btn_Execute.Size = new Size(96, 23);
@@ -176,6 +191,7 @@ namespace ImageSorter
             // 
             // btn_Compare2Img
             // 
+            btn_Compare2Img.Anchor = AnchorStyles.Left;
             btn_Compare2Img.Location = new Point(310, 12);
             btn_Compare2Img.Name = "btn_Compare2Img";
             btn_Compare2Img.Size = new Size(75, 23);
@@ -186,6 +202,7 @@ namespace ImageSorter
             // 
             // btn_SetTarget
             // 
+            btn_SetTarget.Anchor = AnchorStyles.Left;
             btn_SetTarget.Location = new Point(211, 12);
             btn_SetTarget.Name = "btn_SetTarget";
             btn_SetTarget.Size = new Size(75, 23);
@@ -196,6 +213,7 @@ namespace ImageSorter
             // 
             // selectBox_ExportWay
             // 
+            selectBox_ExportWay.Anchor = AnchorStyles.Right;
             selectBox_ExportWay.DropDownWidth = 150;
             selectBox_ExportWay.FormattingEnabled = true;
             selectBox_ExportWay.Items.AddRange(new object[] { "导出目前显示", "导出所选" });
@@ -208,6 +226,7 @@ namespace ImageSorter
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Right;
             label1.AutoSize = true;
             label1.Location = new Point(666, 431);
             label1.Name = "label1";
@@ -217,6 +236,7 @@ namespace ImageSorter
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.Right;
             label2.AutoSize = true;
             label2.Location = new Point(655, 324);
             label2.Name = "label2";
@@ -226,6 +246,7 @@ namespace ImageSorter
             // 
             // selectBox_ModifyWay
             // 
+            selectBox_ModifyWay.Anchor = AnchorStyles.Right;
             selectBox_ModifyWay.DropDownWidth = 200;
             selectBox_ModifyWay.FormattingEnabled = true;
             selectBox_ModifyWay.Items.AddRange(new object[] { "删除目前显示所有图片", "删除目前选择图片", "批量重命名目前所有显示图片", "批量重命名所选图片" });
@@ -236,11 +257,31 @@ namespace ImageSorter
             selectBox_ModifyWay.Text = "删除目前显示所有图片";
             selectBox_ModifyWay.SelectedIndexChanged += SelectExecuteBox_OnChanged;
             // 
+            // lab_high
+            // 
+            lab_high.AutoSize = true;
+            lab_high.Location = new Point(669, 162);
+            lab_high.Name = "lab_high";
+            lab_high.Size = new Size(20, 17);
+            lab_high.TabIndex = 21;
+            lab_high.Text = "高";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(839, 162);
+            label3.Name = "label3";
+            label3.Size = new Size(20, 17);
+            label3.TabIndex = 22;
+            label3.Text = "低";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(878, 524);
+            Controls.Add(label3);
+            Controls.Add(lab_high);
             Controls.Add(selectBox_ModifyWay);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -288,5 +329,7 @@ namespace ImageSorter
         private Label label1;
         private Label label2;
         private ComboBox selectBox_ModifyWay;
+        private Label lab_high;
+        private Label label3;
     }
 }

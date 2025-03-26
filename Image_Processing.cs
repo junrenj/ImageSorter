@@ -145,59 +145,6 @@
         }
 
         /// <summary>
-        /// 感知哈希
-        /// </summary>
-        public ulong GetImagePHash()
-        {
-            GenerateLowResolutionMap(32);   // 重新生成一张32x32的图
-            ConvertToGray(32);            // 灰度化
-            int[,] dctTransformed = DCT();
-
-            // 取前 8x8 低频部分
-            int[] dctLowFreq = new int[8 * 8];
-            int index = 0;
-            for (int i = 0; i < 8; i++)
-                for (int j = 0; j < 8; j++)
-                    dctLowFreq[index++] = dctTransformed[i, j];
-
-            // 计算均值
-            int mean = dctLowFreq.Sum() / dctLowFreq.Length;
-
-            // 生成64位哈希值（ulong）
-            hash = 0;
-            for (int i = 0; i < dctLowFreq.Length; i++)
-            {
-                if (dctLowFreq[i] > mean)
-                    hash |= (1UL << (63 - i)); // 最高位先填充
-            }
-            return hash;
-        }
-        public int[,] DCT()
-        {
-            int size = gray_Img.Width;
-            int[,] dct = new int[size, size];
-
-            for (int u = 0; u < size; u++)
-                for (int v = 0; v < size; v++)
-                {
-                    int sum = 0;
-                    for (int x = 0; x < size; x++)
-                        for (int y = 0; y < size; y++)
-                        {
-                            int pixelValue = gray_Img.GetPixel(x, y).R; // 直接读取灰度值
-                            sum += pixelValue *
-                                   (int)(Math.Cos(((2 * x + 1) * u * Math.PI) / (2 * size)) * 1000) *
-                                   (int)(Math.Cos(((2 * y + 1) * v * Math.PI) / (2 * size)) * 1000);
-                        }
-
-                    int alphaU = (u == 0) ? 707 : 1000;
-                    int alphaV = (v == 0) ? 707 : 1000;
-                    dct[u, v] = (sum * alphaU * alphaV) / (1000 * 1000 * 4);
-                }
-            return dct;
-        }
-
-        /// <summary>
         /// 计算汉明距离
         /// </summary>
         /// <param name="hash_t"></param>

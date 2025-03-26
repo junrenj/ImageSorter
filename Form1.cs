@@ -23,7 +23,7 @@ namespace ImageSorter
         private E_SortType sortType = E_SortType.AHash;
         // 相似性控制精度
         private bool similarFilterOn;
-        private uint similarFilterValue = 100;  // 0-100用于映射
+        private double similarFilterValue = 100;  // 0-100用于映射
         private double remapValue;              // 映射成功后的值
 
         // 3.批量修改面板
@@ -151,15 +151,6 @@ namespace ImageSorter
                         imgData.HammingDistance(t);
                     }
                     break;
-                case E_SortType.PHash:
-                    t = activePictureBox.img_data.GetImagePHash();
-                    foreach (var imgData in importedImage_List)
-                    {
-                        // 感知哈希
-                        imgData.GetImagePHash();
-                        imgData.HammingDistance(t);
-                    }
-                    break;
                 case E_SortType.DHash:
                     t = activePictureBox.img_data.GetImageDHash();
                     foreach (var imgData in importedImage_List)
@@ -210,10 +201,6 @@ namespace ImageSorter
                     sortType = E_SortType.AHash;
                     CtrlHPanelVisibile(false);
                     break;
-                case "感知哈希 PHash":
-                    sortType = E_SortType.PHash;
-                    CtrlHPanelVisibile(false);
-                    break;
                 case "差值哈希 DHash":
                     CtrlHPanelVisibile(false);
                     sortType = E_SortType.DHash;
@@ -232,7 +219,7 @@ namespace ImageSorter
         /// <param name="e"></param>
         private void SF_BarVaule_OnChanged(object sender, EventArgs e)
         {
-            similarFilterValue = (uint)trackBar_Similar.Value;
+            similarFilterValue = (double)trackBar_Similar.Value;
             // Remap Value
             if (similarFilterOn)
             {
@@ -250,7 +237,10 @@ namespace ImageSorter
         {
             similarFilterOn = checkbox_similar.Checked;
             if (similarFilterOn)
-                RefreshFlowLayoutPanel(similarFilterValue);
+            {
+                RemapFilterValue();
+                RefreshFlowLayoutPanel(remapValue);
+            }
             else
                 RefreshFlowLayoutPanel();
         }
@@ -449,7 +439,7 @@ namespace ImageSorter
         private double RemapFilterValue()
         {
             remapValue = Math.Abs(pictureBoxes_List[pictureBoxes_List.Count - 1].img_data.distance - pictureBoxes_List[0].img_data.distance);
-            remapValue = remapValue * (double)similarFilterValue / 100d;
+            remapValue = remapValue * similarFilterValue / 100d + pictureBoxes_List[0].img_data.distance;
             return remapValue;
         }
 
