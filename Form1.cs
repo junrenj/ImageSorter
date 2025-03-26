@@ -1,5 +1,3 @@
-using System.Windows.Forms;
-
 namespace ImageSorter
 {
     public partial class Form1 : Form
@@ -8,6 +6,7 @@ namespace ImageSorter
         private Form1_ImportImg importLogic;
         private Form1_RenameImgs renameLogic;
         private Form1_ExportImgs exportLogic;
+        private Form1_DeleteImgs deleteLogic;
         // 0.数据容器相关
         public List<Image_Processing> importedImage_List;            // 导入的图片信息列表
         public List<PictureBox_Advance> pictureBoxes_List;           // 主面板上的图片UI列表
@@ -43,6 +42,7 @@ namespace ImageSorter
             importLogic = new Form1_ImportImg(this);
             renameLogic = new Form1_RenameImgs(this);
             exportLogic = new Form1_ExportImgs(this);
+            deleteLogic = new Form1_DeleteImgs(this);
             pictureBoxes_List = new List<PictureBox_Advance>();
             importedImage_List = new List<Image_Processing>();
             selectPictures_List = new List<PictureBox_Advance>();
@@ -71,20 +71,12 @@ namespace ImageSorter
         /// <param name="e"></param>
         private void Btn_Clear_Click(object sender, EventArgs e)
         {
+            // 清空主面板
             mainPanel.Controls.Clear();
-            foreach (var info in importedImage_List)
-            {
-                info.ClearBitMap();
-            }
-            importedImage_List.Clear();
-            foreach (var pb in pictureBoxes_List)
-            {
-                if(pb != null)
-                    pb.Image.Dispose();
-            }
-            pictureBoxes_List.Clear();
-            selectPictures_List.Clear();
-            activePictureBox = null;
+            // 清空图片信息列表
+            ClearImageList();
+            // 清空图片UI列表
+            ClearPictureboxList();
             // 清空GC
             GC.Collect();
             GC.WaitForPendingFinalizers();
@@ -110,16 +102,6 @@ namespace ImageSorter
             activePictureBox = selectPictures_List[0];
             activePictureBox.BorderStyle = BorderStyle.FixedSingle;
             activePictureBox.BorderColor = Color.Red;
-        }
-
-        /// <summary>
-        /// 重命名单张图片
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Btn_Rename_Click(object sender, EventArgs e)
-        {
-            renameLogic.RenameOneImage(activePictureBox);
         }
 
         /// <summary>
@@ -320,42 +302,62 @@ namespace ImageSorter
         /// <param name="e"></param>
         private void Btn_Execute_Click(object sender, EventArgs e)
         {
-            //activePictureBox = null;
+            if(mainPanel.Controls.Count == 0)
+            {
+                MessageBox.Show("请导入图片或降低筛选条件");
+                return;
+            }
+            List<PictureBox_Advance> executeList = new List<PictureBox_Advance>();
             switch (executeType)
             {
+                // 删除所有显示图片
                 case E_ExecuteType.DeleteAll:
-
-                    // 删除完所有之后 顺便触发btn clear，清空缓存
-                    Btn_Clear_Click(sender, e);
-                    break;
-                case E_ExecuteType.DeleteSelect:
-                    break;
-                case E_ExecuteType.RenameAllBaseOnTarget:
-                case E_ExecuteType.RenameSelectBaseOnTarget:
-                    RenameFunct();
-                    break;
-            }
-        }
-
-        /// <summary>
-        /// 重命名函数
-        /// </summary>
-        private void RenameFunct()
-        {
-            List<PictureBox_Advance> renameList = new List<PictureBox_Advance>();
-            switch (executeType)
-            {
-                case E_ExecuteType.RenameAllBaseOnTarget:
                     foreach (PictureBox_Advance item in mainPanel.Controls)
-                    {
-                        renameList.Add(item);
-                    }
+                        executeList.Add(item);
+                    deleteLogic.DeleteMultipleImgs(executeList);
+                    // 释放图片信息存储结构中的缓存
+                    ClearImageList();
+                    // 释放图片UI中的缓存
+                    ClearPictureboxList();
+                    // 刷新面板
+                    RefreshFlowLayoutPanel();
                     break;
+                // 删除所有所选图片
+                case E_ExecuteType.DeleteSelect:
+                    if(selectPictures_List.Count == 0)
+                    {
+                        MessageBox.Show("请选择图片");
+                        return;
+                    }
+                    deleteLogic.DeleteMultipleImgs(selectPictures_List);
+                    // 释放图片信息存储结构中的缓存
+                    ClearImageListFromPictureBoxList(selectPictures_List);
+                    // 释放图片UI中的缓存
+                    ClearPictureboxListFromList(selectPictures_List); 
+                    // 刷新面板
+                    RefreshFlowLayoutPanel();
+                    break;
+                // 重命名所有显示图片
+                case E_ExecuteType.RenameAllBaseOnTarget:
+                    if (mainPanel.Controls.Count == 0)
+                    {
+                        MessageBox.Show("请导入图片");
+                        return;
+                    }
+                    foreach (PictureBox_Advance item in mainPanel.Controls)
+                        executeList.Add(item);
+                    renameLogic.RenameMultipleImage(executeList);
+                    break;
+                // 重命名所选图片
                 case E_ExecuteType.RenameSelectBaseOnTarget:
-                    renameList = selectPictures_List;
+                    if (selectPictures_List.Count == 0)
+                    {
+                        MessageBox.Show("请选择图片");
+                        return;
+                    }
+                    renameLogic.RenameMultipleImage(selectPictures_List);
                     break;
             }
-            renameLogic.RenameMultipleImage(renameList);
         }
 
         /// <summary>
@@ -493,7 +495,6 @@ namespace ImageSorter
             btn_Clear.Enabled = !isLock;
             btn_Compare2Img.Enabled = !isLock;
             btn_Import.Enabled = !isLock;
-            btn_Rename.Enabled = !isLock;
             btn_Export.Enabled = !isLock;
             btn_Execute.Enabled = !isLock;
             btn_SetTarget.Enabled = !isLock;
@@ -610,6 +611,70 @@ namespace ImageSorter
                 pic.BorderStyle = BorderStyle.None;
             }
             selectPictures_List.Clear();
+        }
+        #endregion
+
+        #region 数据清理
+
+        /// <summary>
+        /// 清空整个图片信息列表
+        /// </summary>
+        private void ClearImageList()
+        {
+            foreach (Image_Processing img in importedImage_List)
+            {
+                if (img != null)
+                {
+                    img.ClearBitMap();
+                }
+            }
+
+            importedImage_List.Clear();
+        }
+
+        /// <summary>
+        /// 清理指定图片信息
+        /// </summary>
+        /// <param name="clearList"></param>
+        private void ClearImageListFromPictureBoxList(List<PictureBox_Advance> clearList)
+        {
+            foreach (var p in clearList)
+            {
+                p.img_data.ClearBitMap();
+                importedImage_List.Remove(p.img_data);
+            }
+        }
+
+        /// <summary>
+        /// 清空整个图片UI列表
+        /// </summary>
+        private void ClearPictureboxList()
+        {
+            foreach (var pb in pictureBoxes_List)
+            {
+                if (pb != null)
+                    pb.Destroy();
+            }
+            pictureBoxes_List.Clear();
+            selectPictures_List.Clear();
+            activePictureBox = null;
+        }
+
+        /// <summary>
+        /// 清空图片UI指定元素
+        /// </summary>
+        /// <param name="clearList"></param>
+        private void ClearPictureboxListFromList(List<PictureBox_Advance> clearList)
+        {
+            foreach(var pb in clearList)
+            {
+                if (pb != null)
+                {
+                    pb.Destroy();
+                    pictureBoxes_List.Remove(pb);
+                }
+
+            }
         }
         #endregion
 

@@ -12,14 +12,16 @@
         public ulong hash;
         private Bitmap? lowRes_Img;
         private Bitmap? gray_Img;
+        private PictureBox_Advance? pictureBox;
 
         // 互信息 算法
 
         // 构造函数
-        public Image_Processing(string path)
+        public Image_Processing(string path, PictureBox_Advance p)
         {
             originalImagePath = path;
             fileName = Path.GetFileNameWithoutExtension(path);
+            pictureBox = p;
         }
 
 
@@ -27,11 +29,15 @@
         /// 降采样(等宽高)
         /// </summary>
         /// <param name="img_size">宽高长度</param>
-        public void GenerateLowResolutionMap(int img_size = GlobalConstants.size_HashDownSample)
+        public void GenerateLowResolutionMap(int img_size = GlobalConstants.size_HashDownSample, bool usePicturebox = true)
         {
             lowRes_Img?.Dispose();
             lowRes_Img = null;
-            Bitmap original = new Bitmap(originalImagePath);
+            Bitmap original;
+            if (usePicturebox)
+                original = new Bitmap(pictureBox.Image);
+            else
+                original = new Bitmap(originalImagePath);
             img_size = GlobalConstants.size_HashDownSample;
             lowRes_Img = new Bitmap(img_size, img_size);
 
@@ -51,11 +57,15 @@
         /// </summary>
         /// <param name="img_size_x">宽度</param>
         /// <param name="img_size_y">高度</param>
-        public void GenerateLowResolutionMap(int img_size_x, int img_size_y)
+        public void GenerateLowResolutionMap(int img_size_x, int img_size_y, bool usePicturebox = true)
         {
             lowRes_Img?.Dispose();
             lowRes_Img = null;
-            Bitmap original = new Bitmap(originalImagePath);
+            Bitmap original;
+            if (usePicturebox)
+                original = new Bitmap(pictureBox.Image);
+            else
+                original = new Bitmap(originalImagePath);
             lowRes_Img = new Bitmap(img_size_x, img_size_y);
 
             // 使用Graphics对象进行绘制，缩放图像
@@ -256,7 +266,7 @@
             // 释放灰度图
             gray_Img = null;
             // 重新计算一次降采样图
-            GenerateLowResolutionMap(GlobalConstants.h_binSize);
+            GenerateLowResolutionMap(GlobalConstants.h_binSize, true);
 
             int[]? hist = GetHistogram(lowRes_Img);
             int[]? hist_t = GetHistogram(t);

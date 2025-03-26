@@ -10,8 +10,8 @@
         {
             this.Image = LoadThumbnail(filePath, width, height);
             this.SizeMode = PictureBoxSizeMode.Zoom;
-            this.Width = width;
-            this.Height = height;
+            this.Width = 100;
+            this.Height = 100;
             this.Margin = new Padding(5);
         }
 
@@ -51,6 +51,15 @@
             {
                 return img.GetThumbnailImage(width, height, null, IntPtr.Zero);
             }
+        }
+
+        /// <summary>
+        /// 销毁时使用
+        /// </summary>
+        public void Destroy()
+        {
+            Image.Dispose();
+            Image = null;
         }
     }
 

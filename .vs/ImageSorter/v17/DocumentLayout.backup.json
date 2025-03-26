@@ -3,26 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|c:\\users\\jianj\\desktop\\imagesorter\\imagesorter\\form1_exportimgs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|solutionrelative:form1_exportimgs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|c:\\users\\jianj\\desktop\\imagesorter\\imagesorter\\picturebox_advance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|solutionrelative:picturebox_advance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|c:\\users\\jianj\\desktop\\imagesorter\\imagesorter\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|c:\\users\\jianj\\desktop\\imagesorter\\imagesorter\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|solutionrelative:form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|c:\\users\\jianj\\desktop\\imagesorter\\imagesorter\\image_processing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|solutionrelative:image_processing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -31,24 +11,44 @@
       "RelativeMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|solutionrelative:form1_importimgs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|c:\\users\\jianj\\desktop\\imagesorter\\imagesorter\\form1_renameimgs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|solutionrelative:form1_renameimgs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|c:\\users\\jianj\\desktop\\imagesorter\\imagesorter\\globalconstants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|solutionrelative:globalconstants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|c:\\users\\jianj\\desktop\\imagesorter\\imagesorter\\picturebox_advance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|solutionrelative:picturebox_advance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|c:\\users\\jianj\\desktop\\imagesorter\\imagesorter\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|c:\\users\\jianj\\desktop\\imagesorter\\imagesorter\\globalconstants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|solutionrelative:globalconstants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|c:\\users\\jianj\\desktop\\imagesorter\\imagesorter\\form1_deleteimgs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|solutionrelative:form1_deleteimgs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|c:\\users\\jianj\\desktop\\imagesorter\\imagesorter\\form1_exportimgs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|solutionrelative:form1_exportimgs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|c:\\users\\jianj\\desktop\\imagesorter\\imagesorter\\form1_renameimgs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|solutionrelative:form1_renameimgs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|c:\\users\\jianj\\desktop\\imagesorter\\imagesorter\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|solutionrelative:form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|c:\\users\\jianj\\desktop\\imagesorter\\imagesorter\\form1_logicbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|solutionrelative:form1_logicbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|c:\\users\\jianj\\desktop\\imagesorter\\imagesorter\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|solutionrelative:form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|solutionrelative:form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,100 +58,111 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Form1.cs [\u8BBE\u8BA1]",
+              "DocumentIndex": 8,
+              "Title": "Form1.cs [Design]",
               "DocumentMoniker": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Form1.cs [\u8BBE\u8BA1]",
-              "RelativeToolTip": "Form1.cs [\u8BBE\u8BA1]",
+              "ToolTip": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Form1.cs [Design]",
+              "RelativeToolTip": "Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-23T00:51:20.21Z",
               "IsPinned": true,
-              "EditorCaption": " [\u8BBE\u8BA1]"
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Form1.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Form1.Designer.cs",
-              "RelativeDocumentMoniker": "Form1.Designer.cs",
-              "ToolTip": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Form1.Designer.cs",
-              "RelativeToolTip": "Form1.Designer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAPAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Form1.cs",
+              "RelativeToolTip": "Form1.cs",
+              "ViewState": "AgIAAIAAAAAAAAAAAAAcwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-23T00:51:51.789Z",
+              "WhenOpened": "2025-03-23T00:51:48.32Z",
               "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-23T13:50:09.851Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PictureBox_Advance.cs",
-              "DocumentMoniker": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\PictureBox_Advance.cs",
-              "RelativeDocumentMoniker": "PictureBox_Advance.cs",
-              "ToolTip": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\PictureBox_Advance.cs",
-              "RelativeToolTip": "PictureBox_Advance.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-23T03:00:06.051Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Form1_ExportImgs.cs",
-              "DocumentMoniker": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Form1_ExportImgs.cs",
-              "RelativeDocumentMoniker": "Form1_ExportImgs.cs",
-              "ToolTip": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Form1_ExportImgs.cs",
-              "RelativeToolTip": "Form1_ExportImgs.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAApAAAAAAAAAA==",
+              "Title": "Image_Processing.cs",
+              "DocumentMoniker": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Image_Processing.cs",
+              "RelativeDocumentMoniker": "Image_Processing.cs",
+              "ToolTip": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Image_Processing.cs",
+              "RelativeToolTip": "Image_Processing.cs",
+              "ViewState": "AgIAAFgAAAAAAAAAAAAQwAwBAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-25T17:04:34.287Z",
+              "WhenOpened": "2025-03-23T02:11:25.408Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
               "Title": "Form1_importImgs.cs",
               "DocumentMoniker": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Form1_importImgs.cs",
               "RelativeDocumentMoniker": "Form1_importImgs.cs",
               "ToolTip": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Form1_importImgs.cs",
               "RelativeToolTip": "Form1_importImgs.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAEwDEAAAAuAAAAAAAAAA==",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAIwC4AAABTAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-24T00:39:41.599Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Image_Processing.cs",
-              "DocumentMoniker": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Image_Processing.cs",
-              "RelativeDocumentMoniker": "Image_Processing.cs",
-              "ToolTip": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Image_Processing.cs",
-              "RelativeToolTip": "Image_Processing.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAfAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "GlobalConstants.cs",
+              "DocumentMoniker": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\GlobalConstants.cs",
+              "RelativeDocumentMoniker": "GlobalConstants.cs",
+              "ToolTip": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\GlobalConstants.cs",
+              "RelativeToolTip": "GlobalConstants.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-23T02:11:25.408Z",
+              "WhenOpened": "2025-03-23T02:24:51.441Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PictureBox_Advance.cs",
+              "DocumentMoniker": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\PictureBox_Advance.cs",
+              "RelativeDocumentMoniker": "PictureBox_Advance.cs",
+              "ToolTip": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\PictureBox_Advance.cs",
+              "RelativeToolTip": "PictureBox_Advance.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-23T03:00:06.051Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Form1_DeleteImgs.cs",
+              "DocumentMoniker": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Form1_DeleteImgs.cs",
+              "RelativeDocumentMoniker": "Form1_DeleteImgs.cs",
+              "ToolTip": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Form1_DeleteImgs.cs",
+              "RelativeToolTip": "Form1_DeleteImgs.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAAwBQAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T01:23:02.84Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Form1.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Form1.Designer.cs",
+              "RelativeDocumentMoniker": "Form1.Designer.cs",
+              "ToolTip": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Form1.Designer.cs",
+              "RelativeToolTip": "Form1.Designer.cs",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAIwD4AAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T01:37:14.268Z"
             },
             {
               "$type": "Document",
@@ -161,59 +172,45 @@
               "RelativeDocumentMoniker": "Form1_RenameImgs.cs",
               "ToolTip": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Form1_RenameImgs.cs",
               "RelativeToolTip": "Form1_RenameImgs.cs",
-              "ViewState": "AgIAAFYAAAAAAAAAAAAUwGMAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T14:05:55.431Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-24T14:05:55.431Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Form1_ExportImgs.cs",
+              "DocumentMoniker": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Form1_ExportImgs.cs",
+              "RelativeDocumentMoniker": "Form1_ExportImgs.cs",
+              "ToolTip": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Form1_ExportImgs.cs",
+              "RelativeToolTip": "Form1_ExportImgs.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-25T17:04:34.287Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
+              "Title": "Form1_LogicBase.cs",
+              "DocumentMoniker": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Form1_LogicBase.cs",
+              "RelativeDocumentMoniker": "Form1_LogicBase.cs",
+              "ToolTip": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Form1_LogicBase.cs",
+              "RelativeToolTip": "Form1_LogicBase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T01:23:34.939Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "Form2.cs",
               "DocumentMoniker": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Form2.cs",
               "RelativeDocumentMoniker": "Form2.cs",
               "ToolTip": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Form2.cs",
               "RelativeToolTip": "Form2.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-25T00:19:35.261Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Form1.cs",
-              "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Form1.cs",
-              "RelativeToolTip": "Form1.cs",
-              "ViewState": "AgIAAEkBAAAAAAAAAAAYwE4BAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-23T00:51:48.32Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "GlobalConstants.cs",
-              "DocumentMoniker": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\GlobalConstants.cs",
-              "RelativeDocumentMoniker": "GlobalConstants.cs",
-              "ToolTip": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\GlobalConstants.cs",
-              "RelativeToolTip": "GlobalConstants.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAwAIAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-23T02:24:51.441Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Form2.cs [\u8BBE\u8BA1]",
-              "DocumentMoniker": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Form2.cs",
-              "RelativeDocumentMoniker": "Form2.cs",
-              "ToolTip": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Form2.cs [\u8BBE\u8BA1]",
-              "RelativeToolTip": "Form2.cs [\u8BBE\u8BA1]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-25T00:25:26.496Z"
+              "WhenOpened": "2025-03-25T00:19:35.261Z"
             }
           ]
         }

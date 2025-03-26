@@ -43,7 +43,6 @@ namespace ImageSorter
             lab_algo = new Label();
             lab_sampleFrequency = new Label();
             btn_Execute = new Button();
-            btn_Rename = new Button();
             btn_Compare2Img = new Button();
             btn_SetTarget = new Button();
             selectBox_ExportWay = new ComboBox();
@@ -175,19 +174,9 @@ namespace ImageSorter
             btn_Execute.UseVisualStyleBackColor = true;
             btn_Execute.Click += Btn_Execute_Click;
             // 
-            // btn_Rename
-            // 
-            btn_Rename.Location = new Point(308, 12);
-            btn_Rename.Name = "btn_Rename";
-            btn_Rename.Size = new Size(90, 23);
-            btn_Rename.TabIndex = 14;
-            btn_Rename.Text = "单个重命名";
-            btn_Rename.UseVisualStyleBackColor = true;
-            btn_Rename.Click += Btn_Rename_Click;
-            // 
             // btn_Compare2Img
             // 
-            btn_Compare2Img.Location = new Point(428, 12);
+            btn_Compare2Img.Location = new Point(310, 12);
             btn_Compare2Img.Name = "btn_Compare2Img";
             btn_Compare2Img.Size = new Size(75, 23);
             btn_Compare2Img.TabIndex = 15;
@@ -258,7 +247,6 @@ namespace ImageSorter
             Controls.Add(selectBox_ExportWay);
             Controls.Add(btn_SetTarget);
             Controls.Add(btn_Compare2Img);
-            Controls.Add(btn_Rename);
             Controls.Add(btn_Execute);
             Controls.Add(lab_sampleFrequency);
             Controls.Add(lab_algo);
@@ -294,7 +282,6 @@ namespace ImageSorter
         private Label lab_algo;
         private Label lab_sampleFrequency;
         private Button btn_Execute;
-        private Button btn_Rename;
         private Button btn_Compare2Img;
         private Button btn_SetTarget;
         private ComboBox selectBox_ExportWay;

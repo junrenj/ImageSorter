@@ -38,13 +38,13 @@
                         return;
                     }
                 }
-                PictureBox_Advance pictureBox = new PictureBox_Advance(file, 64, 64);
+                PictureBox_Advance pictureBox = new PictureBox_Advance(file, 256, 256);
                 toolTip.SetToolTip(pictureBox, Path.GetFileNameWithoutExtension(file));
 
                 // 注册点击事件
                 pictureBox.Click += form.PictureBox_Click;
                 // 构建Image存储结构
-                Image_Processing newImage = new Image_Processing(file);
+                Image_Processing newImage = new Image_Processing(file, pictureBox);
                 form.importedImage_List.Add(newImage);
                 // 构建PictureBox列表
                 pictureBox.img_data = newImage;
