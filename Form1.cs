@@ -144,8 +144,8 @@ namespace ImageSorter
                 return;
             }
 
-            progressBar1.Value = 0; // 进度条初始化
-            progressBar1.Visible = true;
+            progressBar_Calculate.Value = 0; // 进度条初始化
+            progressBar_Calculate.Visible = true;
 
             BackgroundWorker bgWorker = new BackgroundWorker();
             bgWorker.WorkerReportsProgress = true;
@@ -224,6 +224,14 @@ namespace ImageSorter
                         }
                     }
                     break;
+                case E_SortType.EMD:
+                    int[] emd = activePictureBox.img_data.ComputeHueHistogram();;
+                    for (int i = 0; i < importedImage_List.Count; i++)
+                    {
+                        importedImage_List[i].CalculateEMD_Hue(emd);
+                        worker.ReportProgress((i + 1) * 100 / importedImage_List.Count);
+                    }
+                    break;
             }
 
             pictureBoxes_List.Sort(new DistanceComparer());
@@ -236,7 +244,7 @@ namespace ImageSorter
         /// <param name="e"></param>
         private void BgWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            progressBar1.Value = e.ProgressPercentage;
+            progressBar_Calculate.Value = e.ProgressPercentage;
         }
 
         /// <summary>
@@ -251,7 +259,7 @@ namespace ImageSorter
             // 刷新面板
             RefreshFlowLayoutPanel();
 
-            progressBar1.Visible = false; // 隐藏进度条
+            progressBar_Calculate.Visible = false; // 隐藏进度条
             GC.Collect();
             GC.WaitForPendingFinalizers();
         }
@@ -282,6 +290,10 @@ namespace ImageSorter
                     CtrlHPanelVisibile(false);
                     sortType = E_SortType.SSIM;
                     MessageBox.Show("SSIM仅支持查找相同尺寸的图片");
+                    break;
+                case "直方图移动距离 EMD":
+                    CtrlHPanelVisibile(false);
+                    sortType = E_SortType.EMD;
                     break;
             }
         }
@@ -502,7 +514,7 @@ namespace ImageSorter
                     break;
             }
             // 传输给输出模块操作
-            exportLogic.ExportImgs(exportList);
+            exportLogic.ExportImgs(exportList, progressBar_Export);
         }
 
         /// <summary>

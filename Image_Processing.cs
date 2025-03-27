@@ -260,6 +260,116 @@ namespace ImageSorter
             }
             return histogram;
         }
+
+        #endregion
+
+        #region EMD色温
+        /// <summary>
+        /// 计算EMD色温法
+        /// </summary>
+        /// <param name="image1"></param>
+        /// <param name="image2"></param>
+        /// <returns></returns>
+        public void CalculateEMD_Hue(int[] hist)
+        {
+            // 计算 H 通道直方图
+            int[] hist_t = hist;
+            int[] hist_this = ComputeHueHistogram();
+
+            // 归一化
+            float[] normHist_t = NormalizeHistogram(hist_t);
+            float[] normHist_this = NormalizeHistogram(hist_this);
+
+            // 计算累积分布函数（CDF）
+            float[] cdf_t = ComputeCDF(normHist_t);
+            float[] cdf_this = ComputeCDF(normHist_this);
+
+            // 计算 Wasserstein 距离（近似 EMD）
+            double emd = 0;
+            for (int i = 0; i < cdf_t.Length; i++)
+            {
+                emd += Math.Abs(cdf_t[i] - cdf_this[i]);
+            }
+
+            distance = emd;
+        }
+
+        /// <summary>
+        /// 计算色温直方图
+        /// </summary>
+        /// <param name="img"></param>
+        /// <returns></returns>
+        public int[] ComputeHueHistogram()
+        {
+            Bitmap img_this = new Bitmap(pictureBox.Image);
+            int[] hist = new int[256]; // H 通道直方图
+            for (int y = 0; y < img_this.Height; y++)
+            {
+                for (int x = 0; x < img_this.Width; x++)
+                {
+                    Color color = img_this.GetPixel(x, y);
+                    int hue = RGBtoHue(color.R, color.G, color.B); // 转换为 H 通道
+                    hist[hue]++;
+                }
+            }
+            img_this.Dispose();
+            return hist;
+        }
+
+        /// <summary>
+        /// RGB转HSV
+        /// </summary>
+        /// <param name="r"></param>
+        /// <param name="g"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        private int RGBtoHue(int r, int g, int b)
+        {
+            // RGB 转 HSV（仅返回 H 通道，值范围 0-255）
+            float rf = r / 255f, gf = g / 255f, bf = b / 255f;
+            float max = Math.Max(rf, Math.Max(gf, bf));
+            float min = Math.Min(rf, Math.Min(gf, bf));
+            float delta = max - min;
+            float h = 0;
+
+            if (delta != 0)
+            {
+                if (max == rf) h = (gf - bf) / delta + (gf < bf ? 6 : 0);
+                else if (max == gf) h = (bf - rf) / delta + 2;
+                else h = (rf - gf) / delta + 4;
+
+                h *= 60;
+            }
+
+            return (int)(h / 360 * 255); // 归一化到 0-255
+        }
+
+        /// <summary>
+        /// 矢量化直方图
+        /// </summary>
+        /// <param name="hist"></param>
+        /// <returns></returns>
+        private float[] NormalizeHistogram(int[] hist)
+        {
+            int totalPixels = hist.Sum();
+            return hist.Select(h => (float)h / totalPixels).ToArray();
+        }
+
+        /// <summary>
+        /// 计算CDF
+        /// </summary>
+        /// <param name="hist"></param>
+        /// <returns></returns>
+        private float[] ComputeCDF(float[] hist)
+        {
+            float[] cdf = new float[hist.Length];
+            cdf[0] = hist[0];
+            for (int i = 1; i < hist.Length; i++)
+            {
+                cdf[i] = cdf[i - 1] + hist[i];
+            }
+            return cdf;
+        }
         #endregion
 
         #region SSIM算法
@@ -271,10 +381,6 @@ namespace ImageSorter
         public void CalculateSSIM(Bitmap img_t)
         {
             Bitmap img_this = new Bitmap(pictureBox.Image);
-            if (img_t.Width != pictureBox.Image.Width || img_t.Height != pictureBox.Image.Height)
-            {
-                throw new ArgumentException("Images must be the same size!");
-            }
 
             int width = img_t.Width;
             int height = img_t.Height;
@@ -321,8 +427,9 @@ namespace ImageSorter
             distance = ((2 * meanX * meanY + C1) * (2 * covarianceXY + C2)) /
                           ((meanX * meanX + meanY * meanY + C1) * (varianceX + varianceY + C2));
 
+            // 越接近1越相似 所以判断和1的距离 距离(绝对值)越小 越接近
             distance = Math.Abs(1 - distance);
-
+            img_this.Dispose();
         }
         #endregion
 

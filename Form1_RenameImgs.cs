@@ -89,9 +89,11 @@ namespace ImageSorter
                 p.img_data.fileName = newFileName;
 
                 // 4. 重新加载图片
-                p.Image = new Bitmap(newFilePath);
+                using (Image img = Image.FromFile(newFilePath))
+                {
+                    p.Image = img.GetThumbnailImage(256, 256, null, IntPtr.Zero);
+                }
 
-                //MessageBox.Show("重命名成功！");
             }
             catch (Exception ex)
             {

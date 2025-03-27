@@ -34,6 +34,10 @@
         /// 结构相似性指数
         /// </summary>
         SSIM,
+        /// <summary>
+        /// 直方图移动距离
+        /// </summary>
+        EMD,
     }
 
     public enum E_ExecuteType
