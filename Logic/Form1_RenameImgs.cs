@@ -1,7 +1,6 @@
-﻿using System.IO;
-using System.Windows.Forms;
+﻿using ImageSorter.Data;
 
-namespace ImageSorter
+namespace ImageSorter.Logic
 {
     public class Form1_RenameImgs
     {
@@ -62,7 +61,7 @@ namespace ImageSorter
                             // 调用重命名函数
                             RenameImage(pb, pb.img_data.originalImagePath, newFilePath, newFileName);
                         }
-                                
+
                     }
                 }
                 MessageBox.Show($"成功重命名 {renameList.Count} 张图片");
@@ -91,7 +90,7 @@ namespace ImageSorter
                 // 4. 重新加载图片
                 using (Image img = Image.FromFile(newFilePath))
                 {
-                    p.Image = img.GetThumbnailImage(256, 256, null, IntPtr.Zero);
+                    p.Image = img.GetThumbnailImage(256, 256, null, nint.Zero);
                 }
 
             }

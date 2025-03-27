@@ -1,18 +1,18 @@
-﻿namespace ImageSorter
+﻿namespace ImageSorter.Data
 {
     public class PictureBox_Advance : PictureBox
     {
         public Image_Processing img_data;
         public Label label;
         private Color borderColor = Color.Transparent;
-        
+
         public PictureBox_Advance(Image icon)
         {
-            this.Image = icon;
-            this.SizeMode = PictureBoxSizeMode.Zoom;
-            this.Width = 100;
-            this.Height = 100;
-            this.Margin = new Padding(5);
+            Image = icon;
+            SizeMode = PictureBoxSizeMode.Zoom;
+            Width = 100;
+            Height = 100;
+            Margin = new Padding(5);
         }
 
         public Color BorderColor
@@ -34,7 +34,7 @@
                 using (Pen pen = new Pen(borderColor, 3)) // 设置边框颜色和宽度
                 {
                     // 绘制边框
-                    pe.Graphics.DrawRectangle(pen, 0, 0, this.Width - 1, this.Height - 1);
+                    pe.Graphics.DrawRectangle(pen, 0, 0, Width - 1, Height - 1);
                 }
             }
         }

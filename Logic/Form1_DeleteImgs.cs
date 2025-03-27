@@ -1,6 +1,6 @@
-﻿using System.Windows.Forms;
+﻿using ImageSorter.Data;
 
-namespace ImageSorter
+namespace ImageSorter.Logic
 {
     public class Form1_DeleteImgs
     {

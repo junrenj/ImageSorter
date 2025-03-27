@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ImageSorter")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+142bd6eb8f9b75abf046571d495e8b60daec48e4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+68fcc9d8953fffe7589832a69a1f846a7fe2c8da")]
 [assembly: System.Reflection.AssemblyProductAttribute("ImageSorter")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ImageSorter")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

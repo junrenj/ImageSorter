@@ -1,4 +1,4 @@
-﻿namespace ImageSorter
+﻿namespace ImageSorter.Data
 {
     public static class GlobalConstants
     {

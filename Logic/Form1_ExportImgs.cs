@@ -1,6 +1,7 @@
-﻿using System.Drawing.Imaging;
+﻿using ImageSorter.Data;
+using System.Drawing.Imaging;
 
-namespace ImageSorter
+namespace ImageSorter.Logic
 {
     public class Form1_ExportImgs
     {

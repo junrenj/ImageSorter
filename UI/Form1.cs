@@ -1,5 +1,6 @@
 using System.ComponentModel;
-using System.Windows.Forms;
+using ImageSorter.Data;
+using ImageSorter.Logic;
 
 namespace ImageSorter
 {

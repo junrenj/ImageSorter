@@ -1,6 +1,6 @@
 ﻿using System.Numerics;
 
-namespace ImageSorter
+namespace ImageSorter.Data
 {
     public class Image_Processing
     {
@@ -112,7 +112,7 @@ namespace ImageSorter
             {
                 if (pixels[i] > avg)
                 {
-                    hash |= (1UL << i);
+                    hash |= 1UL << i;
                 }
             }
 
@@ -126,10 +126,10 @@ namespace ImageSorter
         public ulong GetImageDHash()
         {
             // 重新计算灰度图 8x8 -> 9x8
-            GenerateLowResolutionMap(9,8);
+            GenerateLowResolutionMap(9, 8);
 
             // 接着算好一个灰度图
-            ConvertToGray(9,8);
+            ConvertToGray(9, 8);
 
             for (int y = 0; y < 8; y++)
             {
@@ -139,7 +139,7 @@ namespace ImageSorter
                     int rightPixel = gray_Img.GetPixel(x + 1, y).R; // 获取右边像素灰度值
 
                     if (leftPixel > rightPixel) // 左 > 右 置 1，否则置 0
-                        hash |= (1UL << (63 - (y * 8 + x))); // 最高位先填充
+                        hash |= 1UL << 63 - (y * 8 + x); // 最高位先填充
                 }
             }
             return hash;
@@ -158,7 +158,7 @@ namespace ImageSorter
                 distance += (int)(xor & 1); // 统计不同位的个数
                 xor >>= 1;
             }
-            this.distance = (double)distance;
+            this.distance = distance;
         }
 
         /// <summary>
@@ -233,7 +233,7 @@ namespace ImageSorter
                     distance += Math.Pow(norm - norm_t, 2) / (norm + norm_t);
                 }
             }
-            return distance; 
+            return distance;
         }
 
         /// <summary>
@@ -400,8 +400,8 @@ namespace ImageSorter
                     meanY += pixelY;
                 }
             }
-            meanX /= (width * height);
-            meanY /= (width * height);
+            meanX /= width * height;
+            meanY /= width * height;
 
             // 计算方差和协方差
             for (int y = 0; y < height; y++)
@@ -416,15 +416,15 @@ namespace ImageSorter
                     covarianceXY += (pixelX - meanX) * (pixelY - meanY);
                 }
             }
-            varianceX /= (width * height - 1);
-            varianceY /= (width * height - 1);
-            covarianceXY /= (width * height - 1);
+            varianceX /= width * height - 1;
+            varianceY /= width * height - 1;
+            covarianceXY /= width * height - 1;
 
             // SSIM 计算参数
             double C1 = 0.01 * 0.01;
             double C2 = 0.03 * 0.03;
 
-            distance = ((2 * meanX * meanY + C1) * (2 * covarianceXY + C2)) /
+            distance = (2 * meanX * meanY + C1) * (2 * covarianceXY + C2) /
                           ((meanX * meanX + meanY * meanY + C1) * (varianceX + varianceY + C2));
 
             // 越接近1越相似 所以判断和1的距离 距离(绝对值)越小 越接近
@@ -438,9 +438,9 @@ namespace ImageSorter
         /// </summary>
         public void ClearBitMap()
         {
-            if(lowRes_Img != null)
+            if (lowRes_Img != null)
                 lowRes_Img.Dispose();
-            if(gray_Img != null)
+            if (gray_Img != null)
                 gray_Img.Dispose();
         }
 

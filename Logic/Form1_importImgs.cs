@@ -1,6 +1,6 @@
-﻿using System.Numerics;
+﻿using ImageSorter.Data;
 
-namespace ImageSorter
+namespace ImageSorter.Logic
 {
     public class Form1_ImportImg
     {

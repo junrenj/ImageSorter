@@ -14,6 +14,6 @@ C:\Users\jianj\Desktop\ImageSorter\ImageSorter\obj\Debug\net8.0-windows\refint\I
 C:\Users\jianj\Desktop\ImageSorter\ImageSorter\obj\Debug\net8.0-windows\ImageSorter.pdb
 C:\Users\jianj\Desktop\ImageSorter\ImageSorter\obj\Debug\net8.0-windows\ImageSorter.genruntimeconfig.cache
 C:\Users\jianj\Desktop\ImageSorter\ImageSorter\obj\Debug\net8.0-windows\ref\ImageSorter.dll
-C:\Users\jianj\Desktop\ImageSorter\ImageSorter\obj\Debug\net8.0-windows\ImageSorter.Form1_importImg.resources
 C:\Users\jianj\Desktop\ImageSorter\ImageSorter\obj\Debug\net8.0-windows\ImageSorter.Form2.resources
 C:\Users\jianj\Desktop\ImageSorter\ImageSorter\obj\Debug\net8.0-windows\ImageSorter.sourcelink.json
+C:\Users\jianj\Desktop\ImageSorter\ImageSorter\obj\Debug\net8.0-windows\ImageSorter.Logic.Form1_ImportImg.resources

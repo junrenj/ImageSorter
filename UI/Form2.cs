@@ -1,4 +1,6 @@
-﻿namespace ImageSorter
+﻿using ImageSorter.Data;
+
+namespace ImageSorter
 {
     public class Form2 : Form
     {
