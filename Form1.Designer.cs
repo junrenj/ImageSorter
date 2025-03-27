@@ -50,7 +50,10 @@ namespace ImageSorter
             label2 = new Label();
             selectBox_ModifyWay = new ComboBox();
             lab_high = new Label();
-            label3 = new Label();
+            lab_low = new Label();
+            progressBar1 = new ProgressBar();
+            lab_imgSize = new Label();
+            selectBox_ImgSize = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)trackBar_Similar).BeginInit();
             SuspendLayout();
             // 
@@ -68,7 +71,7 @@ namespace ImageSorter
             // btn_Calculate
             // 
             btn_Calculate.Anchor = AnchorStyles.Right;
-            btn_Calculate.Location = new Point(741, 235);
+            btn_Calculate.Location = new Point(741, 145);
             btn_Calculate.Name = "btn_Calculate";
             btn_Calculate.Size = new Size(75, 23);
             btn_Calculate.TabIndex = 1;
@@ -115,7 +118,7 @@ namespace ImageSorter
             // 
             selectBox_Algo.Anchor = AnchorStyles.Right;
             selectBox_Algo.FormattingEnabled = true;
-            selectBox_Algo.Items.AddRange(new object[] { "均值哈希 AHash", "感知哈希 PHash", "直方图 H" });
+            selectBox_Algo.Items.AddRange(new object[] { "均值哈希 AHash", "差值哈希 DHash", "直方图 H", "结构相似指数 SSIM" });
             selectBox_Algo.Location = new Point(741, 54);
             selectBox_Algo.Name = "selectBox_Algo";
             selectBox_Algo.Size = new Size(121, 25);
@@ -126,7 +129,7 @@ namespace ImageSorter
             // trackBar_Similar
             // 
             trackBar_Similar.Anchor = AnchorStyles.Right;
-            trackBar_Similar.Location = new Point(666, 134);
+            trackBar_Similar.Location = new Point(669, 227);
             trackBar_Similar.Maximum = 100;
             trackBar_Similar.Name = "trackBar_Similar";
             trackBar_Similar.Size = new Size(193, 45);
@@ -138,7 +141,7 @@ namespace ImageSorter
             // 
             checkbox_similar.Anchor = AnchorStyles.Right;
             checkbox_similar.AutoSize = true;
-            checkbox_similar.Location = new Point(669, 99);
+            checkbox_similar.Location = new Point(672, 192);
             checkbox_similar.Name = "checkbox_similar";
             checkbox_similar.Size = new Size(87, 21);
             checkbox_similar.TabIndex = 9;
@@ -151,11 +154,11 @@ namespace ImageSorter
             selectBox_HBin.Anchor = AnchorStyles.Right;
             selectBox_HBin.FormattingEnabled = true;
             selectBox_HBin.Items.AddRange(new object[] { "32", "64", "128", "256" });
-            selectBox_HBin.Location = new Point(741, 195);
+            selectBox_HBin.Location = new Point(741, 85);
             selectBox_HBin.Name = "selectBox_HBin";
             selectBox_HBin.Size = new Size(121, 25);
-            selectBox_HBin.Text = "32";
             selectBox_HBin.TabIndex = 10;
+            selectBox_HBin.Text = "32";
             selectBox_HBin.SelectedIndexChanged += SelectHBinBox_OnChanged;
             // 
             // lab_algo
@@ -172,7 +175,7 @@ namespace ImageSorter
             // 
             lab_sampleFrequency.Anchor = AnchorStyles.Right;
             lab_sampleFrequency.AutoSize = true;
-            lab_sampleFrequency.Location = new Point(666, 198);
+            lab_sampleFrequency.Location = new Point(666, 88);
             lab_sampleFrequency.Name = "lab_sampleFrequency";
             lab_sampleFrequency.Size = new Size(56, 17);
             lab_sampleFrequency.TabIndex = 12;
@@ -259,28 +262,63 @@ namespace ImageSorter
             // 
             // lab_high
             // 
+            lab_high.Anchor = AnchorStyles.Right;
             lab_high.AutoSize = true;
-            lab_high.Location = new Point(669, 162);
+            lab_high.Location = new Point(672, 255);
             lab_high.Name = "lab_high";
             lab_high.Size = new Size(20, 17);
             lab_high.TabIndex = 21;
             lab_high.Text = "高";
             // 
-            // label3
+            // lab_low
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(839, 162);
-            label3.Name = "label3";
-            label3.Size = new Size(20, 17);
-            label3.TabIndex = 22;
-            label3.Text = "低";
+            lab_low.Anchor = AnchorStyles.Right;
+            lab_low.AutoSize = true;
+            lab_low.Location = new Point(842, 255);
+            lab_low.Name = "lab_low";
+            lab_low.Size = new Size(20, 17);
+            lab_low.TabIndex = 22;
+            lab_low.Text = "低";
+            // 
+            // progressBar1
+            // 
+            progressBar1.Anchor = AnchorStyles.Right;
+            progressBar1.Location = new Point(669, 123);
+            progressBar1.Name = "progressBar1";
+            progressBar1.Size = new Size(193, 10);
+            progressBar1.TabIndex = 23;
+            // 
+            // lab_imgSize
+            // 
+            lab_imgSize.Anchor = AnchorStyles.Right;
+            lab_imgSize.AutoSize = true;
+            lab_imgSize.Location = new Point(655, 88);
+            lab_imgSize.Name = "lab_imgSize";
+            lab_imgSize.Size = new Size(80, 17);
+            lab_imgSize.TabIndex = 24;
+            lab_imgSize.Text = "比较图片尺寸";
+            // 
+            // combox_ImgSize
+            // 
+            selectBox_ImgSize.Anchor = AnchorStyles.Right;
+            selectBox_ImgSize.FormattingEnabled = true;
+            selectBox_ImgSize.Items.AddRange(new object[] { "512", "1024", "2048" });
+            selectBox_ImgSize.Location = new Point(741, 85);
+            selectBox_ImgSize.Name = "combox_ImgSize";
+            selectBox_ImgSize.Size = new Size(121, 25);
+            selectBox_ImgSize.TabIndex = 25;
+            selectBox_ImgSize.Text = "512";
+            selectBox_ImgSize.SelectedIndexChanged += SelectImgSizeBox_OnChnaged;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(878, 524);
-            Controls.Add(label3);
+            Controls.Add(selectBox_ImgSize);
+            Controls.Add(lab_imgSize);
+            Controls.Add(progressBar1);
+            Controls.Add(lab_low);
             Controls.Add(lab_high);
             Controls.Add(selectBox_ModifyWay);
             Controls.Add(label2);
@@ -330,6 +368,9 @@ namespace ImageSorter
         private Label label2;
         private ComboBox selectBox_ModifyWay;
         private Label lab_high;
-        private Label label3;
+        private Label lab_low;
+        private ProgressBar progressBar1;
+        private Label lab_imgSize;
+        private ComboBox selectBox_ImgSize;
     }
 }

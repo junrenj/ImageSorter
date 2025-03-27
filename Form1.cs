@@ -1,3 +1,5 @@
+using System.ComponentModel;
+
 namespace ImageSorter
 {
     public partial class Form1 : Form
@@ -21,6 +23,7 @@ namespace ImageSorter
         // 2.算法面板
         // 排序算法相关
         private E_SortType sortType = E_SortType.AHash;
+        private E_ImgSize imgSize = E_ImgSize.All;
         // 相似性控制精度
         private bool similarFilterOn;
         private double similarFilterValue = 100;  // 0-100用于映射
@@ -128,7 +131,7 @@ namespace ImageSorter
         #region 计算相关UI事件
 
         /// <summary>
-        /// 计算按钮
+        /// 计算按钮按下
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -139,42 +142,100 @@ namespace ImageSorter
                 MessageBox.Show("请选择目标图片!");
                 return;
             }
+
+            progressBar1.Value = 0; // 进度条初始化
+            progressBar1.Visible = true;
+
+            BackgroundWorker bgWorker = new BackgroundWorker();
+            bgWorker.WorkerReportsProgress = true;
+            bgWorker.DoWork += BgWorker_DoWork;
+            bgWorker.ProgressChanged += BgWorker_ProgressChanged;
+            bgWorker.RunWorkerCompleted += BgWorker_RunWorkerCompleted;
+
+            bgWorker.RunWorkerAsync();
+        }
+
+        /// <summary>
+        /// 进度条开始工作
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BgWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            BackgroundWorker worker = sender as BackgroundWorker;
             ulong t = 0;
+
             switch (sortType)
             {
                 case E_SortType.AHash:
                     t = activePictureBox.img_data.GetImageAHash();
-                    foreach (var imgData in importedImage_List)
+                    for (int i = 0; i < importedImage_List.Count; i++)
                     {
-                        // 均值哈希
-                        imgData.GetImageAHash();
-                        imgData.HammingDistance(t);
+                        importedImage_List[i].GetImageAHash();
+                        importedImage_List[i].HammingDistance(t);
+
+                        // 更新进度
+                        int progress = (i + 1) * 100 / importedImage_List.Count;
+                        worker.ReportProgress(progress);
                     }
                     break;
+
                 case E_SortType.DHash:
                     t = activePictureBox.img_data.GetImageDHash();
-                    foreach (var imgData in importedImage_List)
+                    for (int i = 0; i < importedImage_List.Count; i++)
                     {
-                        // 插值哈希
-                        imgData.GetImageDHash();
-                        imgData.HammingDistance(t);
+                        importedImage_List[i].GetImageDHash();
+                        importedImage_List[i].HammingDistance(t);
+
+                        worker.ReportProgress((i + 1) * 100 / importedImage_List.Count);
                     }
                     break;
+
                 case E_SortType.HistogramCompare:
                     activePictureBox.img_data.GenerateLowResolutionMap(GlobalConstants.h_binSize);
-                    Bitmap b = new Bitmap(activePictureBox.img_data.originalImagePath);
-                    foreach (var imgData in importedImage_List)
+                    int[] h = activePictureBox.img_data.GetHistogram(activePictureBox.img_data.lowRes_Img);
+                    for (int i = 0; i < importedImage_List.Count; i++)
                     {
-                        // 直方图
-                        imgData.CompareHistogram(b);
+                        importedImage_List[i].CompareHistogram(h);
+                        worker.ReportProgress((i + 1) * 100 / importedImage_List.Count);
                     }
-                    b.Dispose();
+                    break;
+                case E_SortType.SSIM:
+                    if(imgSize == E_ImgSize.Others || imgSize == E_ImgSize.All)
+                    {
+                        MessageBox.Show("请选择一种图片尺寸再进行操作");
+                        return;
+                    }
+                    Bitmap b = new Bitmap(activePictureBox.Image);
+                    for (int i = 0; i < mainPanel.Controls.Count; i++)
+                    {
+                        PictureBox_Advance p = mainPanel.Controls[i] as PictureBox_Advance;
+                        p.img_data.CalculateSSIM(b);
+                        worker.ReportProgress((i + 1) * 100 / mainPanel.Controls.Count);
+                    }
                     break;
             }
 
+            pictureBoxes_List.Sort(new DistanceComparer());
+        }
 
-            pictureBoxes_List.Sort(new DistanceComparer(true));
+        /// <summary>
+        /// 更新计算进度
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BgWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            progressBar1.Value = e.ProgressPercentage;
+        }
 
+        /// <summary>
+        /// 计算完成
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
             RemapFilterValue();
 
             // 刷新面板
@@ -183,6 +244,7 @@ namespace ImageSorter
             else
                 RefreshFlowLayoutPanel();
 
+            progressBar1.Visible = false; // 隐藏进度条
             GC.Collect();
             GC.WaitForPendingFinalizers();
         }
@@ -208,6 +270,11 @@ namespace ImageSorter
                 case "直方图 H":
                     CtrlHPanelVisibile(true);
                     sortType = E_SortType.HistogramCompare;
+                    break;
+                case "结构相似指数 SSIM":
+                    CtrlHPanelVisibile(false);
+                    sortType = E_SortType.SSIM;
+                    MessageBox.Show("SSIM仅支持查找相同尺寸的图片");
                     break;
             }
         }
@@ -239,6 +306,7 @@ namespace ImageSorter
             if (similarFilterOn)
             {
                 RemapFilterValue();
+                pictureBoxes_List.Sort(new DistanceComparer());
                 RefreshFlowLayoutPanel(remapValue);
             }
             else
@@ -271,6 +339,28 @@ namespace ImageSorter
         }
 
         /// <summary>
+        /// 图片尺寸选择
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SelectImgSizeBox_OnChnaged(object sender, EventArgs e)
+        {
+            string selectSize = selectBox_ImgSize.SelectedItem.ToString();
+            switch (selectSize)
+            {
+                case "512":
+                    imgSize = E_ImgSize.S_512;
+                    break;
+                case "1024":
+                    imgSize = E_ImgSize.S_512;
+                    break;
+                case "2048":
+                    imgSize = E_ImgSize.S_1024;
+                    break;
+            }
+        }
+
+        /// <summary>
         /// 面板2关上事件
         /// </summary>
         /// <param name="sender"></param>
@@ -292,7 +382,7 @@ namespace ImageSorter
         /// <param name="e"></param>
         private void Btn_Execute_Click(object sender, EventArgs e)
         {
-            if(mainPanel.Controls.Count == 0)
+            if (mainPanel.Controls.Count == 0)
             {
                 MessageBox.Show("请导入图片或降低筛选条件");
                 return;
@@ -314,7 +404,7 @@ namespace ImageSorter
                     break;
                 // 删除所有所选图片
                 case E_ExecuteType.DeleteSelect:
-                    if(selectPictures_List.Count == 0)
+                    if (selectPictures_List.Count == 0)
                     {
                         MessageBox.Show("请选择图片");
                         return;
@@ -323,7 +413,7 @@ namespace ImageSorter
                     // 释放图片信息存储结构中的缓存
                     ClearImageListFromPictureBoxList(selectPictures_List);
                     // 释放图片UI中的缓存
-                    ClearPictureboxListFromList(selectPictures_List); 
+                    ClearPictureboxListFromList(selectPictures_List);
                     // 刷新面板
                     RefreshFlowLayoutPanel();
                     break;
@@ -472,6 +562,15 @@ namespace ImageSorter
                 mainPanel.Controls.Add(activePictureBox);
         }
 
+        /// <summary>
+        /// 控制SSIM算法图片尺寸
+        /// </summary>
+        /// <param name="isVisible"></param>
+        private void CtrlSSIMVisible(bool isVisible)
+        {
+            selectBox_ImgSize.Visible = isVisible;
+            lab_imgSize.Visible = isVisible;
+        }
         #endregion
 
         #region 锁定UI
@@ -656,7 +755,7 @@ namespace ImageSorter
         /// <param name="clearList"></param>
         private void ClearPictureboxListFromList(List<PictureBox_Advance> clearList)
         {
-            foreach(var pb in clearList)
+            foreach (var pb in clearList)
             {
                 if (pb != null)
                 {

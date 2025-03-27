@@ -1,9 +1,12 @@
-﻿namespace ImageSorter
+﻿using System.Numerics;
+
+namespace ImageSorter
 {
     public class Form1_ImportImg
     {
         private Form1 form;
         private ToolTip toolTip = new ToolTip();
+        private E_ImgSize imgSize;
 
         public Form1_ImportImg(Form1 formInstance)
         {
@@ -38,18 +41,47 @@
                         return;
                     }
                 }
-                PictureBox_Advance pictureBox = new PictureBox_Advance(file, 256, 256);
+                // 创造缩略图
+                Image icon = LoadThumbnail(file, 256, 256);
+                PictureBox_Advance pictureBox = new PictureBox_Advance(icon);
                 toolTip.SetToolTip(pictureBox, Path.GetFileNameWithoutExtension(file));
-
                 // 注册点击事件
                 pictureBox.Click += form.PictureBox_Click;
+
+
                 // 构建Image存储结构
-                Image_Processing newImage = new Image_Processing(file, pictureBox);
+                Image_Processing newImage = new Image_Processing(file, pictureBox, imgSize);
                 form.importedImage_List.Add(newImage);
+
                 // 构建PictureBox列表
                 pictureBox.img_data = newImage;
                 form.pictureBoxes_List.Add(pictureBox);
                 form.mainPanel.Controls.Add(pictureBox);
+            }
+        }
+
+
+        /// <summary>
+        /// 自动生成缩略图的方法
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <returns></returns>
+        private Image LoadThumbnail(string filePath, int width, int height)
+        {
+            using (Image img = Image.FromFile(filePath))
+            {
+                if (img.Size.Width == 512 && img.Size.Height == 512)
+                    imgSize = E_ImgSize.S_512;
+                else if (img.Size.Width == 1024 && img.Size.Height == 1024)
+                    imgSize = E_ImgSize.S_1024;
+                else if (img.Size.Width == 2048 && img.Size.Height == 2048)
+                    imgSize = E_ImgSize.S_2048;
+                else
+                    imgSize = E_ImgSize.Others;
+
+                return img.GetThumbnailImage(width, height, null, IntPtr.Zero);
             }
         }
     }

@@ -6,9 +6,9 @@
         public Label label;
         private Color borderColor = Color.Transparent;
         
-        public PictureBox_Advance(string filePath, int width, int height)
+        public PictureBox_Advance(Image icon)
         {
-            this.Image = LoadThumbnail(filePath, width, height);
+            this.Image = icon;
             this.SizeMode = PictureBoxSizeMode.Zoom;
             this.Width = 100;
             this.Height = 100;
@@ -38,20 +38,6 @@
                 }
             }
         }
-        /// <summary>
-        /// 自动生成缩略图的方法
-        /// </summary>
-        /// <param name="filePath"></param>
-        /// <param name="width"></param>
-        /// <param name="height"></param>
-        /// <returns></returns>
-        private Image LoadThumbnail(string filePath, int width, int height)
-        {
-            using (Image img = Image.FromFile(filePath))
-            {
-                return img.GetThumbnailImage(width, height, null, IntPtr.Zero);
-            }
-        }
 
         /// <summary>
         /// 销毁时使用
@@ -60,20 +46,6 @@
         {
             Image.Dispose();
             Image = null;
-        }
-    }
-
-    public class DistanceComparer : IComparer<PictureBox_Advance>
-    {
-        private bool isAscending;
-        public DistanceComparer(bool ascending = true)
-        {
-            isAscending = ascending;
-        }
-
-        int IComparer<PictureBox_Advance>.Compare(PictureBox_Advance? x, PictureBox_Advance? y)
-        {
-            return isAscending ? x.img_data.distance.CompareTo(y.img_data.distance) : y.img_data.distance.CompareTo(x.img_data.distance);
         }
     }
 }

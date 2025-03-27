@@ -7,6 +7,15 @@
         public static ushort h_binSize = 32;
     }
 
+    public enum E_ImgSize
+    {
+        S_512,
+        S_1024,
+        S_2048,
+        Others,
+        All
+    }
+
     public enum E_SortType
     {
         /// <summary>
@@ -21,6 +30,10 @@
         /// 直方图
         /// </summary>
         HistogramCompare,
+        /// <summary>
+        /// 结构相似性指数
+        /// </summary>
+        SSIM,
     }
 
     public enum E_ExecuteType

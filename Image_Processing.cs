@@ -1,27 +1,28 @@
-﻿namespace ImageSorter
+﻿using System.Numerics;
+
+namespace ImageSorter
 {
     public class Image_Processing
     {
+        //基础数据
         public string originalImagePath;
         public string fileName;
-
-        // 通用的distance
-        public double distance;
-
-        // Hash 算法
-        public ulong hash;
-        private Bitmap? lowRes_Img;
+        public Bitmap? lowRes_Img;
         private Bitmap? gray_Img;
         private PictureBox_Advance? pictureBox;
+        public E_ImgSize imgSize;
+        // 通用的distance
+        public double distance;
+        // Hash 算法
+        public ulong hash;
 
-        // 互信息 算法
 
-        // 构造函数
-        public Image_Processing(string path, PictureBox_Advance p)
+        public Image_Processing(string path, PictureBox_Advance p, E_ImgSize imgSize)
         {
             originalImagePath = path;
             fileName = Path.GetFileNameWithoutExtension(path);
             pictureBox = p;
+            this.imgSize = imgSize;
         }
 
 
@@ -208,7 +209,7 @@
         /// </summary>
         /// <param name="t"></param>
         /// <returns></returns>
-        public double CompareHistogram(Bitmap t)
+        public double CompareHistogram(int[] t)
         {
             // 释放灰度图
             gray_Img = null;
@@ -216,11 +217,11 @@
             GenerateLowResolutionMap(GlobalConstants.h_binSize, true);
 
             int[]? hist = GetHistogram(lowRes_Img);
-            int[]? hist_t = GetHistogram(t);
+            int[]? hist_t = t;
 
             // 计算归一化直方图
-            double sum = hist.Sum();
-            double sum_t = hist_t.Sum();
+            double sum = hist.Sum(x => (double)x);
+            double sum_t = hist_t.Sum(x => (double)x);
             distance = 0;
 
             for (int i = 0; i < GlobalConstants.h_binSize * 3; i++)
@@ -240,7 +241,7 @@
         /// </summary>
         /// <param name="img"></param>
         /// <returns></returns>
-        private int[] GetHistogram(Bitmap img)
+        public int[] GetHistogram(Bitmap img)
         {
             int binSize = GlobalConstants.h_binSize;
             int[] histogram = new int[binSize * 3]; // R,G,B 各 n bin
@@ -258,6 +259,68 @@
                 }
             }
             return histogram;
+        }
+        #endregion
+
+        #region SSIM算法
+        /// <summary>
+        /// SSIM算法
+        /// </summary>
+        /// <param name="img_t"></param>
+        /// <exception cref="ArgumentException"></exception>
+        public void CalculateSSIM(Bitmap img_t)
+        {
+            Bitmap img_this = new Bitmap(pictureBox.Image);
+            if (img_t.Width != pictureBox.Image.Width || img_t.Height != pictureBox.Image.Height)
+            {
+                throw new ArgumentException("Images must be the same size!");
+            }
+
+            int width = img_t.Width;
+            int height = img_t.Height;
+
+            double meanX = 0, meanY = 0;
+            double varianceX = 0, varianceY = 0;
+            double covarianceXY = 0;
+
+            // 计算均值
+            for (int y = 0; y < height; y++)
+            {
+                for (int x = 0; x < width; x++)
+                {
+                    double pixelX = img_t.GetPixel(x, y).GetBrightness();
+                    double pixelY = img_this.GetPixel(x, y).GetBrightness();
+                    meanX += pixelX;
+                    meanY += pixelY;
+                }
+            }
+            meanX /= (width * height);
+            meanY /= (width * height);
+
+            // 计算方差和协方差
+            for (int y = 0; y < height; y++)
+            {
+                for (int x = 0; x < width; x++)
+                {
+                    double pixelX = img_t.GetPixel(x, y).GetBrightness();
+                    double pixelY = img_this.GetPixel(x, y).GetBrightness();
+
+                    varianceX += Math.Pow(pixelX - meanX, 2);
+                    varianceY += Math.Pow(pixelY - meanY, 2);
+                    covarianceXY += (pixelX - meanX) * (pixelY - meanY);
+                }
+            }
+            varianceX /= (width * height - 1);
+            varianceY /= (width * height - 1);
+            covarianceXY /= (width * height - 1);
+
+            // SSIM 计算参数
+            double C1 = 0.01 * 0.01;
+            double C2 = 0.03 * 0.03;
+
+            distance = ((2 * meanX * meanY + C1) * (2 * covarianceXY + C2)) /
+                          ((meanX * meanX + meanY * meanY + C1) * (varianceX + varianceY + C2));
+
         }
         #endregion
 
