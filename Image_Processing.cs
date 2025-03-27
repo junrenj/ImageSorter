@@ -321,6 +321,8 @@ namespace ImageSorter
             distance = ((2 * meanX * meanY + C1) * (2 * covarianceXY + C2)) /
                           ((meanX * meanX + meanY * meanY + C1) * (varianceX + varianceY + C2));
 
+            distance = Math.Abs(1 - distance);
+
         }
         #endregion
 

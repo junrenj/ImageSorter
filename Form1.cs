@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace ImageSorter
 {
@@ -201,17 +202,26 @@ namespace ImageSorter
                     }
                     break;
                 case E_SortType.SSIM:
-                    if(imgSize == E_ImgSize.Others || imgSize == E_ImgSize.All)
+                    if (imgSize == E_ImgSize.All || imgSize == E_ImgSize.Others)
                     {
                         MessageBox.Show("请选择一种图片尺寸再进行操作");
+                        worker.ReportProgress(100);
                         return;
                     }
-                    Bitmap b = new Bitmap(activePictureBox.Image);
-                    for (int i = 0; i < mainPanel.Controls.Count; i++)
+                    else if(activePictureBox.img_data.imgSize != imgSize)
                     {
-                        PictureBox_Advance p = mainPanel.Controls[i] as PictureBox_Advance;
-                        p.img_data.CalculateSSIM(b);
-                        worker.ReportProgress((i + 1) * 100 / mainPanel.Controls.Count);
+                        MessageBox.Show("目标图片非筛选器尺寸");
+                    }
+                    else
+                    {
+                        //RefreshFlowLayoutPanel();
+                        Bitmap b = new Bitmap(activePictureBox.Image);
+                        for (int i = 0; i < mainPanel.Controls.Count; i++)
+                        {
+                            PictureBox_Advance p = mainPanel.Controls[i] as PictureBox_Advance;
+                            p.img_data.CalculateSSIM(b);
+                            worker.ReportProgress((i + 1) * 100 / mainPanel.Controls.Count);
+                        }
                     }
                     break;
             }
@@ -239,10 +249,7 @@ namespace ImageSorter
             RemapFilterValue();
 
             // 刷新面板
-            if (similarFilterOn)
-                RefreshFlowLayoutPanel(remapValue);
-            else
-                RefreshFlowLayoutPanel();
+            RefreshFlowLayoutPanel();
 
             progressBar1.Visible = false; // 隐藏进度条
             GC.Collect();
@@ -291,7 +298,7 @@ namespace ImageSorter
             if (similarFilterOn)
             {
                 RemapFilterValue();
-                RefreshFlowLayoutPanel(remapValue);
+                RefreshFlowLayoutPanel();
             }
         }
 
@@ -306,11 +313,8 @@ namespace ImageSorter
             if (similarFilterOn)
             {
                 RemapFilterValue();
-                pictureBoxes_List.Sort(new DistanceComparer());
-                RefreshFlowLayoutPanel(remapValue);
             }
-            else
-                RefreshFlowLayoutPanel();
+            RefreshFlowLayoutPanel();
         }
 
         /// <summary>
@@ -352,12 +356,24 @@ namespace ImageSorter
                     imgSize = E_ImgSize.S_512;
                     break;
                 case "1024":
-                    imgSize = E_ImgSize.S_512;
-                    break;
-                case "2048":
                     imgSize = E_ImgSize.S_1024;
                     break;
+                case "2048":
+                    imgSize = E_ImgSize.S_2048;
+                    break;
+                case "None":
+                    if (sortType == E_SortType.SSIM)
+                    {
+                        MessageBox.Show("SSIM算法一定要选定一种图片尺寸");
+                        selectBox_ImgSize.Text = "512";
+                        return;
+                    }
+                    else
+                        imgSize = E_ImgSize.All;
+                    break;
             }
+
+            RefreshFlowLayoutPanel();
         }
 
         /// <summary>
@@ -511,7 +527,7 @@ namespace ImageSorter
 
         #endregion
 
-        #region 面板方法(刷新)
+        #region UI面板方法(刷新)
 
         /// <summary>
         /// 控制直方图面板开关
@@ -534,43 +550,51 @@ namespace ImageSorter
         }
 
         /// <summary>
-        /// 刷新面板(没有筛选器的时候用)
+        /// 刷新面板
         /// </summary>
         private void RefreshFlowLayoutPanel()
         {
             mainPanel.Controls.Clear();
-            foreach (var pictureBox in pictureBoxes_List)
+            if (!similarFilterOn && imgSize == E_ImgSize.All)
             {
-                mainPanel.Controls.Add(pictureBox);
-            }
-        }
-
-        /// <summary>
-        /// 刷新面板(有筛选条件的时候用)
-        /// </summary>
-        /// <param name="filterValue"></param>
-        private void RefreshFlowLayoutPanel(double filterValue)
-        {
-            mainPanel.Controls.Clear();
-            foreach (var pictureBox in pictureBoxes_List)
-            {
-                if (filterValue >= pictureBox.img_data.distance)
+                foreach (var pictureBox in pictureBoxes_List)
+                {
                     mainPanel.Controls.Add(pictureBox);
+                }
             }
-            // 防止因为误差导致目标图片没有出现
-            if (mainPanel.Controls.Count == 0)
-                mainPanel.Controls.Add(activePictureBox);
+            else if (similarFilterOn && imgSize == E_ImgSize.All)
+            {
+                foreach(var pictureBox in pictureBoxes_List)
+                {
+                    if (remapValue >= pictureBox.img_data.distance)
+                    {
+                        mainPanel.Controls.Add(pictureBox);
+                    }
+                }
+            }
+            else if(!similarFilterOn && imgSize != E_ImgSize.All)
+            {
+                foreach (var pictureBox in pictureBoxes_List)
+                {
+                    if (pictureBox.img_data.imgSize == imgSize)
+                    {
+                        mainPanel.Controls.Add(pictureBox);
+                    }
+                }
+            }
+            else
+            {
+                foreach (var pictureBox in pictureBoxes_List)
+                {
+                    if (remapValue >= pictureBox.img_data.distance)
+                    {
+                        if (imgSize == E_ImgSize.All || pictureBox.img_data.imgSize == imgSize)
+                            mainPanel.Controls.Add(pictureBox);
+                    }
+                }
+            }
         }
 
-        /// <summary>
-        /// 控制SSIM算法图片尺寸
-        /// </summary>
-        /// <param name="isVisible"></param>
-        private void CtrlSSIMVisible(bool isVisible)
-        {
-            selectBox_ImgSize.Visible = isVisible;
-            lab_imgSize.Visible = isVisible;
-        }
         #endregion
 
         #region 锁定UI

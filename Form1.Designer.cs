@@ -71,7 +71,7 @@ namespace ImageSorter
             // btn_Calculate
             // 
             btn_Calculate.Anchor = AnchorStyles.Right;
-            btn_Calculate.Location = new Point(741, 145);
+            btn_Calculate.Location = new Point(729, 149);
             btn_Calculate.Name = "btn_Calculate";
             btn_Calculate.Size = new Size(75, 23);
             btn_Calculate.TabIndex = 1;
@@ -106,7 +106,7 @@ namespace ImageSorter
             // btn_Export
             // 
             btn_Export.Anchor = AnchorStyles.Right;
-            btn_Export.Location = new Point(741, 477);
+            btn_Export.Location = new Point(729, 454);
             btn_Export.Name = "btn_Export";
             btn_Export.Size = new Size(75, 23);
             btn_Export.TabIndex = 6;
@@ -129,10 +129,10 @@ namespace ImageSorter
             // trackBar_Similar
             // 
             trackBar_Similar.Anchor = AnchorStyles.Right;
-            trackBar_Similar.Location = new Point(669, 227);
+            trackBar_Similar.Location = new Point(666, 224);
             trackBar_Similar.Maximum = 100;
             trackBar_Similar.Name = "trackBar_Similar";
-            trackBar_Similar.Size = new Size(193, 45);
+            trackBar_Similar.Size = new Size(196, 45);
             trackBar_Similar.TabIndex = 8;
             trackBar_Similar.TickStyle = TickStyle.None;
             trackBar_Similar.Scroll += SF_BarVaule_OnChanged;
@@ -141,7 +141,7 @@ namespace ImageSorter
             // 
             checkbox_similar.Anchor = AnchorStyles.Right;
             checkbox_similar.AutoSize = true;
-            checkbox_similar.Location = new Point(672, 192);
+            checkbox_similar.Location = new Point(669, 197);
             checkbox_similar.Name = "checkbox_similar";
             checkbox_similar.Size = new Size(87, 21);
             checkbox_similar.TabIndex = 9;
@@ -184,7 +184,7 @@ namespace ImageSorter
             // btn_Execute
             // 
             btn_Execute.Anchor = AnchorStyles.Right;
-            btn_Execute.Location = new Point(741, 361);
+            btn_Execute.Location = new Point(720, 350);
             btn_Execute.Name = "btn_Execute";
             btn_Execute.Size = new Size(96, 23);
             btn_Execute.TabIndex = 13;
@@ -220,7 +220,7 @@ namespace ImageSorter
             selectBox_ExportWay.DropDownWidth = 150;
             selectBox_ExportWay.FormattingEnabled = true;
             selectBox_ExportWay.Items.AddRange(new object[] { "导出目前显示", "导出所选" });
-            selectBox_ExportWay.Location = new Point(741, 428);
+            selectBox_ExportWay.Location = new Point(741, 414);
             selectBox_ExportWay.Name = "selectBox_ExportWay";
             selectBox_ExportWay.Size = new Size(121, 25);
             selectBox_ExportWay.TabIndex = 17;
@@ -231,7 +231,7 @@ namespace ImageSorter
             // 
             label1.Anchor = AnchorStyles.Right;
             label1.AutoSize = true;
-            label1.Location = new Point(666, 431);
+            label1.Location = new Point(666, 417);
             label1.Name = "label1";
             label1.Size = new Size(56, 17);
             label1.TabIndex = 18;
@@ -241,7 +241,7 @@ namespace ImageSorter
             // 
             label2.Anchor = AnchorStyles.Right;
             label2.AutoSize = true;
-            label2.Location = new Point(655, 324);
+            label2.Location = new Point(655, 309);
             label2.Name = "label2";
             label2.Size = new Size(80, 17);
             label2.TabIndex = 19;
@@ -253,7 +253,7 @@ namespace ImageSorter
             selectBox_ModifyWay.DropDownWidth = 200;
             selectBox_ModifyWay.FormattingEnabled = true;
             selectBox_ModifyWay.Items.AddRange(new object[] { "删除目前显示所有图片", "删除目前选择图片", "批量重命名目前所有显示图片", "批量重命名所选图片" });
-            selectBox_ModifyWay.Location = new Point(741, 321);
+            selectBox_ModifyWay.Location = new Point(741, 306);
             selectBox_ModifyWay.Name = "selectBox_ModifyWay";
             selectBox_ModifyWay.Size = new Size(121, 25);
             selectBox_ModifyWay.TabIndex = 20;
@@ -264,7 +264,7 @@ namespace ImageSorter
             // 
             lab_high.Anchor = AnchorStyles.Right;
             lab_high.AutoSize = true;
-            lab_high.Location = new Point(672, 255);
+            lab_high.Location = new Point(670, 260);
             lab_high.Name = "lab_high";
             lab_high.Size = new Size(20, 17);
             lab_high.TabIndex = 21;
@@ -274,7 +274,7 @@ namespace ImageSorter
             // 
             lab_low.Anchor = AnchorStyles.Right;
             lab_low.AutoSize = true;
-            lab_low.Location = new Point(842, 255);
+            lab_low.Location = new Point(842, 260);
             lab_low.Name = "lab_low";
             lab_low.Size = new Size(20, 17);
             lab_low.TabIndex = 22;
@@ -292,22 +292,22 @@ namespace ImageSorter
             // 
             lab_imgSize.Anchor = AnchorStyles.Right;
             lab_imgSize.AutoSize = true;
-            lab_imgSize.Location = new Point(655, 88);
+            lab_imgSize.Location = new Point(643, 26);
             lab_imgSize.Name = "lab_imgSize";
-            lab_imgSize.Size = new Size(80, 17);
+            lab_imgSize.Size = new Size(92, 17);
             lab_imgSize.TabIndex = 24;
-            lab_imgSize.Text = "比较图片尺寸";
+            lab_imgSize.Text = "图片尺寸筛选器";
             // 
-            // combox_ImgSize
+            // selectBox_ImgSize
             // 
             selectBox_ImgSize.Anchor = AnchorStyles.Right;
             selectBox_ImgSize.FormattingEnabled = true;
-            selectBox_ImgSize.Items.AddRange(new object[] { "512", "1024", "2048" });
-            selectBox_ImgSize.Location = new Point(741, 85);
-            selectBox_ImgSize.Name = "combox_ImgSize";
+            selectBox_ImgSize.Items.AddRange(new object[] { "512", "1024", "2048", "None" });
+            selectBox_ImgSize.Location = new Point(741, 23);
+            selectBox_ImgSize.Name = "selectBox_ImgSize";
             selectBox_ImgSize.Size = new Size(121, 25);
             selectBox_ImgSize.TabIndex = 25;
-            selectBox_ImgSize.Text = "512";
+            selectBox_ImgSize.Text = "None";
             selectBox_ImgSize.SelectedIndexChanged += SelectImgSizeBox_OnChnaged;
             // 
             // Form1
