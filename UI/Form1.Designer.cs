@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             btn_Import = new Button();
             btn_Calculate = new Button();
             openFileDialog1 = new OpenFileDialog();
@@ -53,12 +54,12 @@
             lab_imgSize = new Label();
             selectBox_ImgSize = new ComboBox();
             progressBar_Export = new ProgressBar();
+            btn_ClearSlect = new Button();
             ((System.ComponentModel.ISupportInitialize)trackBar_Similar).BeginInit();
             SuspendLayout();
             // 
             // btn_Import
             // 
-            btn_Import.Anchor = AnchorStyles.Left | AnchorStyles.Top;
             btn_Import.Location = new Point(23, 12);
             btn_Import.Name = "btn_Import";
             btn_Import.Size = new Size(75, 23);
@@ -69,7 +70,7 @@
             // 
             // btn_Calculate
             // 
-            btn_Calculate.Anchor = AnchorStyles.Right | AnchorStyles.Top;
+            btn_Calculate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btn_Calculate.Location = new Point(729, 149);
             btn_Calculate.Name = "btn_Calculate";
             btn_Calculate.Size = new Size(75, 23);
@@ -93,7 +94,6 @@
             // 
             // btn_Clear
             // 
-            btn_Clear.Anchor = AnchorStyles.Left | AnchorStyles.Top;
             btn_Clear.Location = new Point(116, 12);
             btn_Clear.Name = "btn_Clear";
             btn_Clear.Size = new Size(75, 23);
@@ -104,7 +104,7 @@
             // 
             // btn_Export
             // 
-            btn_Export.Anchor = AnchorStyles.Right | AnchorStyles.Top;
+            btn_Export.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btn_Export.Location = new Point(729, 467);
             btn_Export.Name = "btn_Export";
             btn_Export.Size = new Size(75, 23);
@@ -115,7 +115,7 @@
             // 
             // selectBox_Algo
             // 
-            selectBox_Algo.Anchor = AnchorStyles.Right | AnchorStyles.Top;
+            selectBox_Algo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             selectBox_Algo.FormattingEnabled = true;
             selectBox_Algo.Items.AddRange(new object[] { "均值哈希 AHash", "差值哈希 DHash", "直方图 H", "结构相似指数 SSIM", "直方图移动距离 EMD" });
             selectBox_Algo.Location = new Point(741, 54);
@@ -127,7 +127,7 @@
             // 
             // trackBar_Similar
             // 
-            trackBar_Similar.Anchor = AnchorStyles.Right | AnchorStyles.Top;
+            trackBar_Similar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             trackBar_Similar.Location = new Point(666, 224);
             trackBar_Similar.Maximum = 100;
             trackBar_Similar.Name = "trackBar_Similar";
@@ -138,7 +138,7 @@
             // 
             // checkbox_similar
             // 
-            checkbox_similar.Anchor = AnchorStyles.Right | AnchorStyles.Top;
+            checkbox_similar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             checkbox_similar.AutoSize = true;
             checkbox_similar.Location = new Point(669, 197);
             checkbox_similar.Name = "checkbox_similar";
@@ -150,7 +150,7 @@
             // 
             // selectBox_HBin
             // 
-            selectBox_HBin.Anchor = AnchorStyles.Right | AnchorStyles.Top;
+            selectBox_HBin.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             selectBox_HBin.FormattingEnabled = true;
             selectBox_HBin.Items.AddRange(new object[] { "32", "64", "128", "256" });
             selectBox_HBin.Location = new Point(741, 85);
@@ -162,7 +162,7 @@
             // 
             // lab_algo
             // 
-            lab_algo.Anchor = AnchorStyles.Right | AnchorStyles.Top;
+            lab_algo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lab_algo.AutoSize = true;
             lab_algo.Location = new Point(666, 59);
             lab_algo.Name = "lab_algo";
@@ -172,7 +172,7 @@
             // 
             // lab_sampleFrequency
             // 
-            lab_sampleFrequency.Anchor = AnchorStyles.Right | AnchorStyles.Top;
+            lab_sampleFrequency.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lab_sampleFrequency.AutoSize = true;
             lab_sampleFrequency.Location = new Point(666, 88);
             lab_sampleFrequency.Name = "lab_sampleFrequency";
@@ -182,7 +182,7 @@
             // 
             // btn_Execute
             // 
-            btn_Execute.Anchor = AnchorStyles.Right | AnchorStyles.Top;
+            btn_Execute.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btn_Execute.Location = new Point(720, 350);
             btn_Execute.Name = "btn_Execute";
             btn_Execute.Size = new Size(96, 23);
@@ -193,8 +193,7 @@
             // 
             // btn_Compare2Img
             // 
-            btn_Compare2Img.Anchor = AnchorStyles.Left | AnchorStyles.Top;
-            btn_Compare2Img.Location = new Point(310, 12);
+            btn_Compare2Img.Location = new Point(415, 12);
             btn_Compare2Img.Name = "btn_Compare2Img";
             btn_Compare2Img.Size = new Size(75, 23);
             btn_Compare2Img.TabIndex = 15;
@@ -204,7 +203,6 @@
             // 
             // btn_SetTarget
             // 
-            btn_SetTarget.Anchor = AnchorStyles.Left | AnchorStyles.Top;
             btn_SetTarget.Location = new Point(211, 12);
             btn_SetTarget.Name = "btn_SetTarget";
             btn_SetTarget.Size = new Size(75, 23);
@@ -215,7 +213,7 @@
             // 
             // selectBox_ExportWay
             // 
-            selectBox_ExportWay.Anchor = AnchorStyles.Right | AnchorStyles.Top;
+            selectBox_ExportWay.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             selectBox_ExportWay.DropDownWidth = 150;
             selectBox_ExportWay.FormattingEnabled = true;
             selectBox_ExportWay.Items.AddRange(new object[] { "导出目前显示", "导出所选" });
@@ -228,7 +226,7 @@
             // 
             // label1
             // 
-            label1.Anchor = AnchorStyles.Right | AnchorStyles.Top;
+            label1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label1.AutoSize = true;
             label1.Location = new Point(666, 417);
             label1.Name = "label1";
@@ -238,7 +236,7 @@
             // 
             // label2
             // 
-            label2.Anchor = AnchorStyles.Right | AnchorStyles.Top;
+            label2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label2.AutoSize = true;
             label2.Location = new Point(655, 309);
             label2.Name = "label2";
@@ -248,7 +246,7 @@
             // 
             // selectBox_ModifyWay
             // 
-            selectBox_ModifyWay.Anchor = AnchorStyles.Right | AnchorStyles.Top;
+            selectBox_ModifyWay.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             selectBox_ModifyWay.DropDownWidth = 200;
             selectBox_ModifyWay.FormattingEnabled = true;
             selectBox_ModifyWay.Items.AddRange(new object[] { "删除目前显示所有图片", "删除目前选择图片", "批量重命名目前所有显示图片", "批量重命名所选图片" });
@@ -261,7 +259,7 @@
             // 
             // lab_high
             // 
-            lab_high.Anchor = AnchorStyles.Right | AnchorStyles.Top;
+            lab_high.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lab_high.AutoSize = true;
             lab_high.Location = new Point(670, 260);
             lab_high.Name = "lab_high";
@@ -271,7 +269,7 @@
             // 
             // lab_low
             // 
-            lab_low.Anchor = AnchorStyles.Right | AnchorStyles.Top;
+            lab_low.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lab_low.AutoSize = true;
             lab_low.Location = new Point(842, 260);
             lab_low.Name = "lab_low";
@@ -281,7 +279,7 @@
             // 
             // progressBar_Calculate
             // 
-            progressBar_Calculate.Anchor = AnchorStyles.Right | AnchorStyles.Top;
+            progressBar_Calculate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             progressBar_Calculate.Location = new Point(669, 123);
             progressBar_Calculate.Name = "progressBar_Calculate";
             progressBar_Calculate.Size = new Size(193, 10);
@@ -289,7 +287,7 @@
             // 
             // lab_imgSize
             // 
-            lab_imgSize.Anchor = AnchorStyles.Right | AnchorStyles.Top;
+            lab_imgSize.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lab_imgSize.AutoSize = true;
             lab_imgSize.Location = new Point(643, 26);
             lab_imgSize.Name = "lab_imgSize";
@@ -299,7 +297,7 @@
             // 
             // selectBox_ImgSize
             // 
-            selectBox_ImgSize.Anchor = AnchorStyles.Right | AnchorStyles.Top;
+            selectBox_ImgSize.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             selectBox_ImgSize.FormattingEnabled = true;
             selectBox_ImgSize.Items.AddRange(new object[] { "512", "1024", "2048", "None" });
             selectBox_ImgSize.Location = new Point(741, 23);
@@ -309,19 +307,30 @@
             selectBox_ImgSize.Text = "None";
             selectBox_ImgSize.SelectedIndexChanged += SelectImgSizeBox_OnChnaged;
             // 
-            // progressBarExport
+            // progressBar_Export
             // 
-            progressBar_Export.Anchor = AnchorStyles.Right | AnchorStyles.Top;
+            progressBar_Export.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             progressBar_Export.Location = new Point(669, 451);
-            progressBar_Export.Name = "progressBarExport";
+            progressBar_Export.Name = "progressBar_Export";
             progressBar_Export.Size = new Size(193, 10);
             progressBar_Export.TabIndex = 26;
+            // 
+            // btn_ClearSlect
+            // 
+            btn_ClearSlect.Location = new Point(314, 12);
+            btn_ClearSlect.Name = "btn_ClearSlect";
+            btn_ClearSlect.Size = new Size(75, 23);
+            btn_ClearSlect.TabIndex = 27;
+            btn_ClearSlect.Text = "清空所选";
+            btn_ClearSlect.UseVisualStyleBackColor = true;
+            btn_ClearSlect.Click += btn_ClearSlect_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(878, 524);
+            Controls.Add(btn_ClearSlect);
             Controls.Add(progressBar_Export);
             Controls.Add(selectBox_ImgSize);
             Controls.Add(lab_imgSize);
@@ -346,6 +355,7 @@
             Controls.Add(mainPanel);
             Controls.Add(btn_Calculate);
             Controls.Add(btn_Import);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
             Text = "Image Sorter";
             Load += Form1_Load;
@@ -381,5 +391,6 @@
         private Label lab_imgSize;
         private ComboBox selectBox_ImgSize;
         private ProgressBar progressBar_Export;
+        private Button btn_ClearSlect;
     }
 }

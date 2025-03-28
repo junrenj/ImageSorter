@@ -88,6 +88,34 @@ namespace ImageSorter
         }
 
         /// <summary>
+        /// 清空所选
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_ClearSlect_Click(object sender, EventArgs e)
+        {
+            foreach (var item in selectPictures_List)
+            {
+                pictureBoxes_List.Remove(item);
+                mainPanel.Controls.Remove(item);
+                importedImage_List.Remove(item.img_data);
+                item.Destroy();
+            }
+            // 保险一点 置空
+            if (activePictureBox != null)
+            {
+                activePictureBox.BorderStyle = BorderStyle.None;
+                activePictureBox.BorderColor = Color.Transparent;
+                activePictureBox = null;
+            }
+            // GC 释放缓存
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            // 刷新面板
+            RefreshFlowLayoutPanel();
+        }
+
+        /// <summary>
         /// 设置目标图片
         /// </summary>
         /// <param name="sender"></param>
@@ -209,7 +237,7 @@ namespace ImageSorter
                         worker.ReportProgress(100);
                         return;
                     }
-                    else if(activePictureBox.img_data.imgSize != imgSize)
+                    else if (activePictureBox.img_data.imgSize != imgSize)
                     {
                         MessageBox.Show("目标图片非筛选器尺寸");
                     }
@@ -226,7 +254,7 @@ namespace ImageSorter
                     }
                     break;
                 case E_SortType.EMD:
-                    int[] emd = activePictureBox.img_data.ComputeHueHistogram();;
+                    int[] emd = activePictureBox.img_data.ComputeHueHistogram(); ;
                     for (int i = 0; i < importedImage_List.Count; i++)
                     {
                         importedImage_List[i].CalculateEMD_Hue(emd);
@@ -423,13 +451,15 @@ namespace ImageSorter
                 case E_ExecuteType.DeleteAll:
                     foreach (PictureBox_Advance item in mainPanel.Controls)
                         executeList.Add(item);
-                    deleteLogic.DeleteMultipleImgs(executeList);
-                    // 释放图片信息存储结构中的缓存
-                    ClearImageList();
-                    // 释放图片UI中的缓存
-                    ClearPictureboxList();
-                    // 刷新面板
-                    RefreshFlowLayoutPanel();
+                    if (deleteLogic.DeleteMultipleImgs(executeList))
+                    {
+                        // 释放图片信息存储结构中的缓存
+                        ClearImageList();
+                        // 释放图片UI中的缓存
+                        ClearPictureboxList();
+                        // 刷新面板
+                        RefreshFlowLayoutPanel();
+                    }
                     break;
                 // 删除所有所选图片
                 case E_ExecuteType.DeleteSelect:
@@ -438,13 +468,15 @@ namespace ImageSorter
                         MessageBox.Show("请选择图片");
                         return;
                     }
-                    deleteLogic.DeleteMultipleImgs(selectPictures_List);
-                    // 释放图片信息存储结构中的缓存
-                    ClearImageListFromPictureBoxList(selectPictures_List);
-                    // 释放图片UI中的缓存
-                    ClearPictureboxListFromList(selectPictures_List);
-                    // 刷新面板
-                    RefreshFlowLayoutPanel();
+                    if (deleteLogic.DeleteMultipleImgs(selectPictures_List))
+                    {
+                        // 释放图片信息存储结构中的缓存
+                        ClearImageListFromPictureBoxList(selectPictures_List);
+                        // 释放图片UI中的缓存
+                        ClearPictureboxListFromList(selectPictures_List);
+                        // 刷新面板
+                        RefreshFlowLayoutPanel();
+                    }
                     break;
                 // 重命名所有显示图片
                 case E_ExecuteType.RenameAllBaseOnTarget:
@@ -577,7 +609,7 @@ namespace ImageSorter
             }
             else if (similarFilterOn && imgSize == E_ImgSize.All)
             {
-                foreach(var pictureBox in pictureBoxes_List)
+                foreach (var pictureBox in pictureBoxes_List)
                 {
                     if (remapValue >= pictureBox.img_data.distance)
                     {
@@ -585,7 +617,7 @@ namespace ImageSorter
                     }
                 }
             }
-            else if(!similarFilterOn && imgSize != E_ImgSize.All)
+            else if (!similarFilterOn && imgSize != E_ImgSize.All)
             {
                 foreach (var pictureBox in pictureBoxes_List)
                 {

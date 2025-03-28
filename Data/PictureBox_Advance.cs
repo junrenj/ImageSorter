@@ -31,10 +31,10 @@
 
             if (borderColor != Color.Transparent)
             {
-                using (Pen pen = new Pen(borderColor, 3)) // 设置边框颜色和宽度
+                using (Pen pen = new Pen(borderColor, 10)) // 设置边框颜色和宽度
                 {
                     // 绘制边框
-                    pe.Graphics.DrawRectangle(pen, 0, 0, Width - 1, Height - 1);
+                    pe.Graphics.DrawRectangle(pen, 0, 0, Width, Height);
                 }
             }
         }

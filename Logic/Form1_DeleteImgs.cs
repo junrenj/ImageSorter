@@ -10,10 +10,10 @@ namespace ImageSorter.Logic
             form = formInstance;
         }
 
-        public void DeleteMultipleImgs(List<PictureBox_Advance> list)
+        public bool DeleteMultipleImgs(List<PictureBox_Advance> list)
         {
             if(list.Count == 0)
-                return;
+                return false;
 
             // 弹出确认窗口
             DialogResult result = MessageBox.Show(
@@ -30,6 +30,11 @@ namespace ImageSorter.Logic
                     DeleteImg(p);
                 }
                 MessageBox.Show("图片删除成功！", "删除成功", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
+            }
+            else
+            {
+                return false;
             }
 
         }
