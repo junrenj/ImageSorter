@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|c:\\users\\jianj\\desktop\\imagesorter\\imagesorter\\data\\image_processing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|solutionrelative:data\\image_processing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|c:\\users\\jianj\\desktop\\imagesorter\\imagesorter\\ui\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|solutionrelative:ui\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|c:\\users\\jianj\\desktop\\imagesorter\\imagesorter\\imagesorter.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
       "RelativeMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|solutionrelative:imagesorter.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
@@ -13,10 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|c:\\users\\jianj\\desktop\\imagesorter\\imagesorter\\data\\picturebox_advance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|solutionrelative:data\\picturebox_advance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|c:\\users\\jianj\\desktop\\imagesorter\\imagesorter\\ui\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|solutionrelative:ui\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\ui\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -57,10 +61,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|c:\\users\\jianj\\desktop\\imagesorter\\imagesorter\\ui\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|solutionrelative:ui\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|c:\\users\\jianj\\desktop\\imagesorter\\imagesorter\\data\\image_processing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A7D190AE-A270-4E76-8F4C-613071D89C3D}|ImageSorter.csproj|solutionrelative:data\\image_processing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -70,52 +70,35 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 7,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "ImageSorter",
               "DocumentMoniker": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\ImageSorter.csproj",
               "RelativeDocumentMoniker": "ImageSorter.csproj",
               "ToolTip": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\ImageSorter.csproj",
               "RelativeToolTip": "ImageSorter.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-03-28T01:12:10.127Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-28T01:12:10.127Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ImageSorter.csproj",
-              "DocumentMoniker": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\ImageSorter.csproj",
-              "RelativeDocumentMoniker": "ImageSorter.csproj",
-              "ToolTip": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\ImageSorter.csproj",
-              "RelativeToolTip": "ImageSorter.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-03-27T16:46:35.879Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\UI\\Form1.cs",
               "RelativeDocumentMoniker": "UI\\Form1.cs",
               "ToolTip": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\UI\\Form1.cs",
               "RelativeToolTip": "UI\\Form1.cs",
-              "ViewState": "AgIAADkAAAAAAAAAAAAIwF4AAABFAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAMYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-23T00:51:48.32Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Form1_DeleteImgs.cs",
               "DocumentMoniker": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Logic\\Form1_DeleteImgs.cs",
               "RelativeDocumentMoniker": "Logic\\Form1_DeleteImgs.cs",
@@ -127,7 +110,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Form1.Designer.cs",
               "DocumentMoniker": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\UI\\Form1.Designer.cs",
               "RelativeDocumentMoniker": "UI\\Form1.Designer.cs",
@@ -139,7 +122,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Form1_importImgs.cs",
               "DocumentMoniker": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Logic\\Form1_importImgs.cs",
               "RelativeDocumentMoniker": "Logic\\Form1_importImgs.cs",
@@ -151,7 +134,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "PictureBox_Advance.cs",
               "DocumentMoniker": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Data\\PictureBox_Advance.cs",
               "RelativeDocumentMoniker": "Data\\PictureBox_Advance.cs",
@@ -163,7 +146,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Form1_RenameImgs.cs",
               "DocumentMoniker": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Logic\\Form1_RenameImgs.cs",
               "RelativeDocumentMoniker": "Logic\\Form1_RenameImgs.cs",
@@ -175,7 +158,32 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 0,
+              "Title": "Image_Processing.cs",
+              "DocumentMoniker": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Data\\Image_Processing.cs",
+              "RelativeDocumentMoniker": "Data\\Image_Processing.cs",
+              "ToolTip": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Data\\Image_Processing.cs",
+              "RelativeToolTip": "Data\\Image_Processing.cs",
+              "ViewState": "AgIAAMkAAAAAAAAAAAAiwNMAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-23T02:11:25.408Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ImageSorter.csproj",
+              "DocumentMoniker": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\ImageSorter.csproj",
+              "RelativeDocumentMoniker": "ImageSorter.csproj",
+              "ToolTip": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\ImageSorter.csproj",
+              "RelativeToolTip": "ImageSorter.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-27T16:46:35.879Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "Form1_ExportImgs.cs",
               "DocumentMoniker": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Logic\\Form1_ExportImgs.cs",
               "RelativeDocumentMoniker": "Logic\\Form1_ExportImgs.cs",
@@ -187,7 +195,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "GlobalConstants.cs",
               "DocumentMoniker": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Data\\GlobalConstants.cs",
               "RelativeDocumentMoniker": "Data\\GlobalConstants.cs",
@@ -199,7 +207,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "DistanceComparer.cs",
               "DocumentMoniker": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Logic\\DistanceComparer.cs",
               "RelativeDocumentMoniker": "Logic\\DistanceComparer.cs",
@@ -211,7 +219,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "Form2.cs",
               "DocumentMoniker": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\UI\\Form2.cs",
               "RelativeDocumentMoniker": "UI\\Form2.cs",
@@ -223,16 +231,8 @@
               "EditorCaption": ""
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Image_Processing.cs",
-              "DocumentMoniker": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Data\\Image_Processing.cs",
-              "RelativeDocumentMoniker": "Data\\Image_Processing.cs",
-              "ToolTip": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\Data\\Image_Processing.cs",
-              "RelativeToolTip": "Data\\Image_Processing.cs",
-              "ViewState": "AgIAAC0BAAAAAAAAAAAwwHQBAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-23T02:11:25.408Z"
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
               "$type": "Bookmark",
@@ -240,7 +240,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Form1.cs [\u8BBE\u8BA1]",
               "DocumentMoniker": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\UI\\Form1.cs",
               "RelativeDocumentMoniker": "UI\\Form1.cs",
@@ -251,7 +251,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "Form2.cs [\u8BBE\u8BA1]",
               "DocumentMoniker": "C:\\Users\\jianj\\Desktop\\ImageSorter\\ImageSorter\\UI\\Form2.cs",
               "RelativeDocumentMoniker": "UI\\Form2.cs",

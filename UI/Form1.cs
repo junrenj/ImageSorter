@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Diagnostics;
 using ImageSorter.Data;
 using ImageSorter.Logic;
 
@@ -194,6 +195,9 @@ namespace ImageSorter
         {
             BackgroundWorker worker = sender as BackgroundWorker;
             ulong t = 0;
+            //Stopwatch stopwatch = new Stopwatch(); // 创建 Stopwatch 实例
+
+            //stopwatch.Start(); // 开始计时
 
             switch (sortType)
             {
@@ -264,6 +268,10 @@ namespace ImageSorter
             }
 
             pictureBoxes_List.Sort(new DistanceComparer());
+
+            //stopwatch.Stop(); // 停止计时
+
+            //Debug.WriteLine($"程序运行时间: {stopwatch.ElapsedMilliseconds} 毫秒");
         }
 
         /// <summary>
